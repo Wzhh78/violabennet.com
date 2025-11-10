@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viola Bennet | Frequently Asked Questions (FAQ)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+<style>
+        /* Core styles (Copied from index/contact for consistency) */
+        body {
+            font-family: 'Georgia', serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc;
+            color: #4a4a4a; 
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0; 
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto; 
+            margin-right: 0; 
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav ul li {
+            margin-left: 30px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #a78b71; 
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav ul li a:hover::after {
+            width: 100%;
+        }
+        .nav ul li a:hover {
+            color: #a78b71; 
+        }
+
+        /* 汉堡包菜单按钮样式 (新增) - START */
+        .menu-toggle {
+            display: none; /* 默认在桌面端隐藏 */
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4a4a4a; 
+            padding: 0;
+        }
+        /* 汉堡包菜单按钮样式 (新增) - END */
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 50px; 
+            text-align: center;
+        }
+        
+        .footer-nav {
+            margin-bottom: 25px;
+        }
+        
+        .footer-nav a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: #bbb;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #a78b71; 
+        }
+        
+        .copyright {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* ========== FAQ Specific Styles ========== */
+        .faq-hero {
+            background-color: #e3ebe8; /* Light blue/green hint */
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .faq-hero h1 {
+            font-size: 48px;
+            color: #4a6a6a;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .faq-hero p {
+            font-size: 18px;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .faq-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 50px;
+        }
+
+        .faq-item {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            background-color: #fff;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 17px;
+            color: #555;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f7f7f7;
+        }
+
+        .faq-question.active {
+            background-color: #e6f0f0;
+            color: #4a6a6a;
+        }
+
+        .faq-question i {
+            margin-left: 10px;
+            transition: transform 0.3s;
+            color: #a78b71; 
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            background-color: #fcfcfc;
+        }
+
+        .faq-answer p {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            margin: 0;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            /* 1. 手机上显示菜单按钮 */
+            .menu-toggle {
+                display: block; 
+            }
+            
+            /* 2. 手机上默认隐藏导航列表，并设置为堆叠显示 */
+            .nav ul {
+                display: none; /* 默认隐藏 */
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* 导航栏高度之下 */
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                padding: 10px 0;
+                border-top: 1px solid #f0f0f0;
+                z-index: 999; 
+            }
+
+            /* 3. 激活状态下显示导航列表 */
+            .nav.active ul {
+                display: flex;
+            }
+            
+            /* 4. 调整手机菜单项的间距 */
+            .nav ul li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav ul li a {
+                 padding: 10px 20px; 
+                 display: block;
+            }
+            
+            /* FAQ 响应式调整 */
+            .faq-hero h1 {
+                font-size: 36px;
+            }
+            .faq-content {
+                padding: 40px 20px;
+            }
+            .faq-question {
+                font-size: 16px;
+                padding: 15px;
+            }
+            .faq-answer p {
+                 font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Viola Bennet.jpg" alt="Viola Bennet Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Jewelry Collection</a></li>
+                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Love Novels</a></li>
+                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music</a></li>
+                <li><a href="about.html">Brand Story</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="faq-hero">
+        <h1>Frequently Asked Questions (FAQ)</h1>
+        <p>Answers to your questions about our jewelry, novels, and brand.</p>
+    </section>
+
+    <div class="faq-content">
+
+        <div class="faq-item">
+            <div class="faq-question" id="q1">
+                Where can I learn more about Viola Bennet and her creative vision?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Viola Bennet is a brand encompassing jewelry, love novels, and original music. You can find more details about her journey, inspiration, and philosophy on the <a href="about.html">Brand Story</a> page.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" id="q2">
+                What materials are used in Viola Bennet jewelry?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Our jewelry pieces are made using high-quality, ethically sourced materials, primarily including S925 sterling silver and high-grade alloys, often plated with precious metals like 14k or 18k gold. We use AAA-grade cubic zirconia (CZ) or semi-precious stones for sparkle.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" id="q3">
+                Where can I buy Viola Bennet's novels?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Viola Bennet's love novels are available through major international online retailers, including Amazon worldwide. You can find direct links on our <a href="index.html#novels">Home Page (Novels section)</a> or by searching for "Viola Bennet" on Amazon.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" id="q4">
+                Where can I listen to Viola Bennet's original music?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Her original music, often the official soundtracks for her novels, is primarily hosted on her official YouTube channel. You can access it directly via the <a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music link</a> in our navigation bar.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" id="q5">
+                What are the shipping costs and delivery times?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>Since Viola Bennet jewelry is currently sold primarily through platforms like Amazon, shipping costs and delivery times are governed by the specific policies of that platform in your region. Please refer to your cart and checkout page on Amazon for accurate, up-to-date information.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" id="q6">
+                What is your policy on returns and exchanges?
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">
+                <p>All returns and exchanges follow the policy of the channel through which you made the purchase (such as Amazon). Please contact the customer service of the original platform or reach out to us via our <a href="contact.html">contact email</a> for assistance.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <a href="contact.html">Contact Us</a>
+            <a href="policy.html">Privacy Policy</a>
+            <a href="faq.html" style="color: white;">FAQ</a>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/elainevane0049?s=21" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/share/17Z9MRvZac/?mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 Viola Bennet Official Website. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 移动端菜单切换脚本 (保持与 index.html 一致)
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+            
+            // FAQ 交互脚本 (风琴折叠效果)
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // 关闭所有已打开的 FAQ 项
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        if (q !== question) {
+                            q.classList.remove('active');
+                            q.nextElementSibling.style.maxHeight = null;
+                        }
+                    });
+
+                    // 切换当前点击项的状态
+                    if (isActive) {
+                        question.classList.remove('active');
+                        answer.style.maxHeight = null;
+                    } else {
+                        question.classList.add('active');
+                        // 技巧：设置 max-height 为 scrollHeight 可以让元素流畅地展开到完整高度
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

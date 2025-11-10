@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Viola Bennet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+<style>
+        /* Core styles (Copied from index/contact for consistency) */
+        body {
+            font-family: 'Georgia', serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc;
+            color: #4a4a4a; 
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0; 
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto; 
+            margin-right: 0; 
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav ul li {
+            margin-left: 30px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #a78b71; 
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav ul li a:hover::after {
+            width: 100%;
+        }
+        .nav ul li a:hover {
+            color: #a78b71; 
+        }
+
+        /* 汉堡包菜单按钮样式 (新增) - START */
+        .menu-toggle {
+            display: none; /* 默认在桌面端隐藏 */
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4a4a4a; 
+            padding: 0;
+        }
+        /* 汉堡包菜单按钮样式 (新增) - END */
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 50px; 
+            text-align: center;
+        }
+        
+        .footer-nav {
+            margin-bottom: 25px;
+        }
+        
+        .footer-nav a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: #bbb;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #a78b71; 
+        }
+        
+        .copyright {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* ========== Policy Specific Styles ========== */
+
+        .policy-hero {
+            background-color: #e8e3ef; /* Light purple/grey hint */
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .policy-hero h1 {
+            font-size: 48px;
+            color: #554a6a;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .policy-hero p {
+            font-size: 18px;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .policy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 50px;
+        }
+
+        .policy-content h2 {
+            color: #a78b71;
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .policy-content h3 {
+            color: #6a5a4a;
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .policy-content p, .policy-content ul, .policy-content li {
+            font-size: 16px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .policy-content ul {
+            margin-left: 25px;
+            padding-left: 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            /* 1. 手机上显示菜单按钮 */
+            .menu-toggle {
+                display: block; 
+            }
+            
+            /* 2. 手机上默认隐藏导航列表，并设置为堆叠显示 */
+            .nav ul {
+                display: none; /* 默认隐藏 */
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* 导航栏高度之下 */
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                padding: 10px 0;
+                border-top: 1px solid #f0f0f0;
+                z-index: 999; 
+            }
+
+            /* 3. 激活状态下显示导航列表 */
+            .nav.active ul {
+                display: flex;
+            }
+            
+            /* 4. 调整手机菜单项的间距 */
+            .nav ul li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav ul li a {
+                 padding: 10px 20px; 
+                 display: block;
+            }
+            
+            /* Policy 响应式调整 */
+            .policy-hero h1 {
+                font-size: 36px;
+            }
+            .policy-content {
+                padding: 40px 20px;
+            }
+            .policy-content h2 {
+                font-size: 24px;
+            }
+            .policy-content h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Viola Bennet.jpg" alt="Viola Bennet Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Jewelry Collection</a></li>
+                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Love Novels</a></li>
+                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music</a></li>
+                <li><a href="about.html">Brand Story</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="policy-hero">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy and trust are of the utmost importance to us.</p>
+    </section>
+
+    <div class="policy-content">
+        <p><strong>Effective Date: November 10, 2025</strong></p>
+        <p>Viola Bennet operates this website. This page informs you of our policies regarding the collection, use, and disclosure of Personal Information we receive from users of the Site.</p>
+
+        <h2>1. Information Collection and Use</h2>
+        <p>While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to, your name and email address ("Personal Information").</p>
+
+        <h2>2. Log Data</h2>
+        <p>Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
+        <p>We use Google Analytics to collect, monitor, and analyze this data to improve our service.</p>
+
+        <h2>3. Communications</h2>
+        <p>We may use your Personal Information to contact you with newsletters, marketing or promotional materials, and other information that pertains to Viola Bennet's products or services, but only if you have explicitly opted in to receive such communications.</p>
+
+        <h2>4. Cookies</h2>
+        <p>Cookies are files with a small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your computer's hard drive. We use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+
+        <h2>5. Security</h2>
+        <p>The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.</p>
+
+        <h2>6. Third-Party Services</h2>
+        <p>Our website may contain links to other sites (such as Amazon, Instagram, YouTube) that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+
+        <h2>7. Changes to This Privacy Policy</h2>
+        <p>This Privacy Policy is effective as of November 10, 2025, and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+
+        <h2>8. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us:</p>
+        <p>By email: <a href="mailto:info@violabennet.com">contact@violabennet.com</a></p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <a href="contact.html">Contact Us</a>
+            <a href="policy.html" style="color: white;">Privacy Policy</a>
+            <a href="faq.html">FAQ</a>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/elainevane0049?s=21" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/share/17Z9MRvZac/?mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 Viola Bennet Official Website. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', function() {
+                    // 切换 nav 元素的 'active' 类，CSS 通过这个类来显示菜单
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
