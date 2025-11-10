@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viola Bennet | Official Portal - Jewelry 窶｢ Music 窶｢ Love Novels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+<style>
+        /* Basic Reset */
+        body {
+            font-family: 'Georgia', serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc; 
+            color: #4a4a4a; 
+            line-height: 1.6;
+        }
+
+        /* Header Navigation Bar - Elegant and Clean */
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0; 
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto; 
+            margin-right: 0; 
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav ul li {
+            margin-left: 30px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #a78b71; 
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav ul li a:hover::after {
+            width: 100%;
+        }
+        .nav ul li a:hover {
+            color: #a78b71; 
+        }
+        
+        /* 汉堡包菜单按钮样式 (新增) */
+        .menu-toggle {
+            display: none; /* 默认在桌面端隐藏 */
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4a4a4a; 
+            padding: 0;
+        }
+
+        /* Hero Section/Main Visual */
+        .hero {
+            background: url('hero-banner.jpg') no-repeat center center/cover; 
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.25); 
+        }
+
+        .hero-content {
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 64px; 
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 26px;
+            margin-bottom: 45px;
+            font-style: italic;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background-color: #a78b71; 
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-size: 19px;
+            border: 2px solid #a78b71;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+        
+        /* Content Sections - Categorized Display */
+        .section {
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 60px;
+            color: #6a5a4a; 
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px; 
+            height: 1px;
+            bottom: -15px;
+            left: calc(50% - 30px);
+            background-color: #ccc;
+        }
+
+        .category-grid {
+            display: flex;
+            justify-content: center; 
+            gap: 40px; 
+            flex-wrap: wrap;
+        }
+
+        .category-item {
+            flex-basis: calc(33% - 40px); 
+            max-width: 400px; 
+            text-align: left;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 5px; 
+        }
+
+        .category-item:hover {
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 300px; 
+            object-fit: cover; 
+            display: block;
+            transition: opacity 0.3s;
+        }
+        
+        .category-item:hover img {
+             opacity: 0.85; 
+        }
+
+        .item-info {
+            padding: 25px; 
+        }
+
+        .item-info h3 {
+            font-size: 24px;
+            margin-top: 0;
+            color: #6a5a4a;
+            margin-bottom: 10px;
+        }
+
+        .item-info p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 50px; 
+            text-align: center;
+        }
+        
+        .footer-nav {
+            margin-bottom: 25px;
+        }
+        
+        .footer-nav a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: #bbb;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #a78b71; 
+        }
+        
+        .copyright {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* Responsive adjustments (已修改和添加菜单逻辑) */
+        @media (max-width: 992px) {
+            .category-item {
+                flex-basis: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                /* 确保 logo 和菜单按钮对齐 */
+            }
+
+            /* 1. 手机上显示菜单按钮 */
+            .menu-toggle {
+                display: block; 
+            }
+            
+            /* 2. 手机上默认隐藏导航列表，并设置为堆叠显示 */
+            /* 注意: .nav 本身在桌面端是 flex item。在移动端，我们需要通过 JS 给 .nav 
+               添加 .active 类来控制 .nav ul 的显示。
+            */
+            .nav ul {
+                display: none; /* 默认隐藏 */
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* 导航栏高度之下 */
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                padding: 10px 0;
+                border-top: 1px solid #f0f0f0;
+                z-index: 999; /* 确保菜单在内容上方 */
+            }
+
+            /* 3. 激活状态下显示导航列表 */
+            .nav.active ul {
+                display: flex;
+            }
+            
+            /* 4. 调整手机菜单项的间距 */
+            .nav ul li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav ul li a {
+                 padding: 10px 20px; /* 增加点击区域 */
+                 display: block;
+            }
+
+            /* 原有响应式样式 */
+            .hero {
+                height: 450px;
+            }
+            .hero h1 {
+                font-size: 48px;
+            }
+            .hero p {
+                font-size: 20px;
+            }
+            .section {
+                padding: 60px 20px;
+            }
+            .category-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .category-item {
+                flex-basis: 90%;
+            }
+            .footer {
+                padding: 30px 20px;
+            }
+            .footer-nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="Viola Bennet.jpg" alt="Viola Bennet Logo">
+            </a>
+        </div>
+        
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Jewelry Collection</a></li>
+                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Love Novels</a></li>
+                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music</a></li>
+                <li><a href="about.html">Brand Story</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero-section">
+        <div class="hero-content">
+            <h1>Viola Bennet</h1>
+            <p>Elegance Meets Emotion - Where Art and Love Intertwine</p>
+            <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=e4e35090-c5a7-4f76-81ff-cb99dcd1ff4c&ref_=ast_bln" class="cta-button" target="_blank">Explore Latest Jewelry</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Discover Our World</h2>
+        
+        <div class="category-grid">
+            
+            <div class="category-item">
+                <img src="jewelry-collection.jpg" alt="Viola Bennet Jewelry" onerror="this.src='https://via.placeholder.com/400x300?text=Jewelry+Collection';">
+                <div class="item-info">
+                    <h3>虫 Timeless Love Jewelry</h3>
+                    <p>Inspired by the poetic verses of her novels, each piece sparkles with the essence of enduring love.</p>
+                    <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=e4e35090-c5a7-4f76-81ff-cb99dcd1ff4c&ref_=ast_bln" class="cta-button" style="background-color: transparent; color: #a78b71; border-color: #a78b71;" target="_blank">View Collection on Amazon</a>
+                </div>
+            </div>
+
+            <div class="category-item">
+                <img src="love-novels.jpg" alt="Viola Bennet Love Novels" onerror="this.src='https://via.placeholder.com/400x300?text=Love+Novels';">
+                <div class="item-info">
+                    <h3>当 Enchanting Love Novels</h3>
+                    <p>Immerse yourself in Viola Bennet's epic tales of romance, passion, and intertwined destinies.</p>
+                    <a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" class="cta-button" style="background-color: transparent; color: #a78b71; border-color: #a78b71;" target="_blank">Buy Book on Amazon</a>
+                </div>
+            </div>
+            
+            <div class="category-item">
+                <img src="original-music.jpg" alt="Viola Bennet Music" onerror="this.src='https://via.placeholder.com/400x300?text=Original+Soundtrack';">
+                <div class="item-info">
+                    <h3>叱 Evocative Original Music</h3>
+                    <p>Experience the official soundtracks, personally composed by Viola Bennet to bring stories to life.</p>
+                    <a href="https://www.youtube.com/@ViolaBennet" class="cta-button" style="background-color: transparent; color: #a78b71; border-color: #a78b71;" target="_blank">Listen Now</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: #f7f7f7;">
+        <h2 class="section-title">巳 About Viola Bennet</h2>
+        <div style="max-width: 850px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 19px; margin-bottom: 40px; color: #555;">Viola Bennet is more than just a name; she embodies **a passionate pursuit of beauty** and **an infinite longing for genuine emotion**. From the delicate words of her novels to the sparkle of her jewels, she masterfully blends art, love, and elegance.</p>
+            <a href="about.html" class="cta-button" style="background-color: #a78b71; color: white; border-color: #a78b71;">Learn More About Viola's World</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <a href="contact.html">Contact Us</a>
+            <a href="policy.html">Privacy Policy</a>
+            <a href="faq.html">FAQ</a>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/elainevane0049?s=21" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/share/17Z9MRvZac/?mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 Viola Bennet Official Website. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', function() {
+                    // 切换 nav 元素的 'active' 类，CSS 通过这个类来显示菜单
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
