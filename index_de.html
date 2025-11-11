@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viola Bennet | Offizielles Portal - Schmuck 窶｢ Musik 窶｢ Liebesromane</title>
+    <title>Viola Bennet | Offizielles Portal - Schmuck ・ Musik ・ Liebesromane</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
         /* Basic Reset */
@@ -16,7 +16,7 @@
             line-height: 1.6;
         }
 
-        /* --- START: 语言切换器样式 --- */
+        /* --- START: Sprachumschalter-Stile --- */
         .language-switcher a {
             text-decoration: none;
             color: #a78b71;
@@ -27,16 +27,16 @@
             border-radius: 3px;
             transition: all 0.3s;
             margin-left: 20px;
-            white-space: nowrap;
+            white-space: nowrap; /* Verhindert Zeilenumbruch */
         }
         .language-switcher a:hover {
             background-color: #a78b71;
             color: white;
         }
-        /* 可见性控制 */
+        /* Sichtbarkeitskontrolle */
         .desktop-only { display: flex; align-items: center; }
         .mobile-only { display: none; }
-        /* --- END: 语言切换器样式 --- */
+        /* --- END: Sprachumschalter-Stile --- */
 
         /* Header Navigation Bar - Elegant and Clean */
         .header {
@@ -64,22 +64,20 @@
             margin-right: 0; 
         }
 
-        /* *** 关键修改 1: 确保 nav ul 包含语言切换器时保持桌面布局 *** */
         .nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex; /* 确保所有内部元素（包括语言切换器）在一行 */
-            align-items: center; /* 垂直居中对齐 */
+            display: flex; /* Stellt sicher, dass alle internen Elemente in einer Reihe sind */
+            align-items: center; /* Vertikale Zentrierung */
         }
 
         .nav ul li {
             margin-left: 30px;
         }
         
-        /* 确保语言切换器在 desktop-only 状态下正确显示在 nav ul 内部 */
         .nav ul .language-switcher.desktop-only {
-            margin-left: 30px; /* 匹配导航链接的间距 */
+            margin-left: 30px; 
         }
 
         .nav ul li a {
@@ -109,9 +107,9 @@
             color: #a78b71; 
         }
         
-        /* 汉堡包菜单按钮样式 (新增) */
+        /* Hamburger-Menü-Schaltfläche (Neu) */
         .menu-toggle {
-            display: none; 
+            display: none; /* Standardmäßig auf dem Desktop versteckt */
             background: none;
             border: none;
             font-size: 24px;
@@ -120,7 +118,7 @@
             padding: 0;
         }
 
-        /* Hero Section/Main Visual (其余样式不变...) */
+        /* Hero Section/Main Visual */
         .hero {
             background: url('hero-banner.jpg') no-repeat center center/cover; 
             height: 600px;
@@ -180,7 +178,7 @@
             color: white;
         }
         
-        /* Content Sections - Categorized Display (其余样式不变...) */
+        /* Content Sections - Categorized Display */
         .section {
             padding: 80px 50px;
             text-align: center;
@@ -258,7 +256,7 @@
             margin-bottom: 25px;
         }
         
-        /* Footer (其余样式不变...) */
+        /* Footer */
         .footer {
             background-color: #333;
             color: white;
@@ -303,37 +301,39 @@
             color: #999;
         }
 
-        /* Responsive adjustments */
+        /* ================================================= */
+        /* Responsive Anpassung - Mobiloptimierung */
+        /* ================================================= */
+
         @media (max-width: 992px) {
+            /* Auf Tablet-Größe werden die Karten zu zwei Spalten */
             .category-item {
                 flex-basis: calc(50% - 30px);
             }
         }
 
         @media (max-width: 768px) {
-            /* 移动端可见性控制 */
-            .desktop-only { display: none; }
-            .mobile-only { display: block; }
             
-            /* 移动端布局调整 */
+            /* Mobile Sichtbarkeitskontrolle: Desktop-Elemente ausblenden, Mobile-Elemente anzeigen */
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+            
+            /* Anpassung der Kopfzeile */
             .header {
                 padding: 15px 20px;
             }
-            /* 确保 logo 和 菜单/语言切换按钮 对齐 */
-            .header > .logo {
-                margin-right: auto; /* 推开右侧元素 */
-            }
-            .header > .menu-toggle {
-                margin-left: 20px;
+            
+            /* Hamburger-Menü-Schaltfläche anzeigen */
+            .menu-toggle {
+                display: block;
             }
             
-            /* 导航菜单在移动端显示为堆叠列表 */
+            /* Navigationsmenü wird mobil zu einer gestapelten Liste */
             .nav ul {
-                /* 覆盖桌面端的 flex display */
-                display: none; 
+                display: none; /* Standardmäßig verstecken */
                 flex-direction: column;
                 position: absolute;
-                top: 70px; 
+                top: 70px; /* Unterhalb der Kopfzeile */
                 left: 0;
                 width: 100%;
                 background-color: #ffffff;
@@ -343,12 +343,12 @@
                 z-index: 999; 
             }
 
-            /* 激活状态下显示导航列表 */
+            /* Im aktiven Zustand Navigationsliste anzeigen */
             .nav.active ul {
                 display: flex;
             }
             
-            /* 调整手机菜单项的间距 */
+            /* Anpassen des Abstands der Menüpunkte */
             .nav ul li {
                 margin: 0;
                 text-align: center;
@@ -360,9 +360,8 @@
                  display: block;
             }
             
-            /* 移动端语言按钮样式调整，使之像菜单项 */
+            /* Mobile Sprachschalter-Stile an Menüpunkte anpassen */
             .nav ul .language-switcher.mobile-only {
-                /* 移除桌面端的 margin-left */
                 margin-left: 0;
                 border-top: 1px solid #f0f0f0;
             }
@@ -378,31 +377,42 @@
                 background-color: #fcfcfc;
             }
 
-            /* 原有响应式样式 (不变...) */
+            /* Hero-Bereich */
             .hero {
-                height: 450px;
+                height: 400px; /* Höhe reduzieren */
             }
             .hero h1 {
-                font-size: 48px;
+                font-size: 36px; /* Schriftgröße des Titels reduzieren */
+                letter-spacing: 2px;
             }
             .hero p {
-                font-size: 20px;
+                font-size: 18px; /* Schriftgröße des Absatzes reduzieren */
+                margin-bottom: 30px;
             }
+            
+            /* Inhalt gestapelt */
             .section {
-                padding: 60px 20px;
+                padding: 50px 20px;
             }
             .category-grid {
-                flex-direction: column;
+                flex-direction: column; /* Karten vertikal stapeln */
                 align-items: center;
+                gap: 30px; 
             }
             .category-item {
-                flex-basis: 90%;
+                flex-basis: 100%; /* Karten nehmen die volle Breite ein */
+                max-width: 100%; 
             }
+            .category-item img {
+                height: 250px; /* Bildhöhe anpassen */
+            }
+
+            /* Fußzeilenanpassung */
             .footer {
                 padding: 30px 20px;
             }
             .footer-nav a {
-                display: block;
+                display: block; /* Fußzeilen-Links vertikal stapeln */
                 margin: 10px 0;
             }
         }
@@ -515,7 +525,7 @@
 
             if (menuToggle && nav) {
                 menuToggle.addEventListener('click', function() {
-                    // 切换 nav 元素的 'active' 类，CSS 通过这个类来显示菜单
+                    // Schaltet die 'active'-Klasse des nav-Elements um, wodurch das Menü über CSS angezeigt wird
                     nav.classList.toggle('active');
                 });
             }
