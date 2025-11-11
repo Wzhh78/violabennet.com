@@ -34,5 +34,15 @@ Please replace the placeholder images with your actual brand assets:
 ---
 
 ## 🛠️ 文件结构与要求
-
+文件名	语言	内容	语言切换至
+contact.html	🇬🇧 英文	联系我们	contact_de.html
+contact_de.html	🇩🇪 德语	Kontakt	contact.html
+faq.html	🇬🇧 英文	FAQ	faq_de.html
+faq_de.html	🇩🇪 德语	FAQ	faq.html
+policy.html	🇬🇧 英文	Privacy Policy	policy_de.html
+policy_de.html	🇩🇪 德语	Datenschutzerklärung	policy.html
+index.html GB 英文 homepaeg index.html
+index_de.html DE 德语 homepaeg index_de.html
+about.html GB 英文 about us about.html
+about_de.html DE 德语 about us about_de.html
 为了让网站正常运行在 GitHub Pages 上，所有文件必须放在仓库的根目录下。
