@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über Viola Bennet | Markengeschichte und Philosophie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+<style>
+        /* Core styles (Copied from index/contact for consistency) */
+        body {
+            font-family: 'Georgia', serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc;
+            color: #4a4a4a; 
+            line-height: 1.6;
+        }
+
+        /* --- START: Sprachwechsler-Stile --- */
+        .language-switcher a {
+            text-decoration: none;
+            color: #a78b71;
+            font-size: 16px;
+            font-weight: 500;
+            border: 1px solid #a78b71;
+            padding: 5px 8px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            margin-left: 20px;
+            white-space: nowrap; 
+        }
+        .language-switcher a:hover {
+            background-color: #a78b71;
+            color: white;
+        }
+        /* Sichtbarkeit Kontrolle */
+        .desktop-only { display: flex; align-items: center; }
+        .mobile-only { display: none; }
+        /* --- END: Sprachwechsler-Stile --- */
+
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0f0f0; 
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto; 
+            margin-right: 0; 
+        }
+        
+        /* Wichtig: ul als flex-Container für Sprachwechsler */
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; 
+            align-items: center; 
+        }
+
+        .nav ul li {
+            margin-left: 30px;
+        }
+        
+        /* Sprachwechsler in der Desktop-Navigation */
+        .nav ul .language-switcher.desktop-only {
+            margin-left: 30px; 
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        /* Aktive Seite Stil */
+        .nav ul li a[href="about_de.html"] {
+             color: #a78b71;
+        }
+        
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #a78b71; 
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav ul li a:hover::after,
+        .nav ul li a[href="about_de.html"]::after { /* Aktiver Stil auch mit Unterstrich */
+            width: 100%;
+        }
+        .nav ul li a:hover {
+            color: #a78b71; 
+        }
+
+        /* Hamburger Menü Button */
+        .menu-toggle {
+            display: none; 
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #4a4a4a; 
+            padding: 0;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 50px; 
+            text-align: center;
+        }
+        
+        .footer-nav {
+            margin-bottom: 25px;
+        }
+        
+        .footer-nav a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: #bbb;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #a78b71; 
+        }
+        
+        .copyright {
+            font-size: 13px;
+            color: #999;
+        }
+
+        /* ========== about.html/about_de.html Specific Styles ========== */
+        
+        .about-hero {
+            background-color: #efe8e3; 
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            color: #6a5a4a;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .about-hero p {
+            font-size: 18px;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .content-section {
+            padding: 60px 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .content-section:nth-child(odd) {
+            flex-direction: row-reverse; 
+        }
+        
+        .text-content {
+            flex: 1;
+            padding: 20px;
+        }
+        
+        .image-container {
+            flex: 1;
+            max-width: 50%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .text-content h2 {
+            font-size: 32px;
+            color: #a78b71; 
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .text-content p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .philosophy-section {
+            background-color: #f0f0f0;
+            padding: 60px 50px;
+            text-align: center;
+        }
+        
+        .philosophy-section h2 {
+            color: #4a4a4a;
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .philosophy-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .grid-item {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .grid-item i {
+            font-size: 36px;
+            color: #a78b71;
+            margin-bottom: 15px;
+        }
+        
+        .grid-item h3 {
+            font-size: 20px;
+            color: #6a5a4a;
+            margin-top: 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .content-section, .content-section:nth-child(odd) {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .image-container {
+                max-width: 100%;
+            }
+            .philosophy-grid {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Sichtbarkeit Kontrolle */
+            .desktop-only { display: none; }
+            .mobile-only { display: block; }
+            
+            .header {
+                padding: 15px 20px;
+            }
+            
+            /* Hamburger Menü */
+            .menu-toggle {
+                display: block; 
+            }
+            
+            .nav ul {
+                display: none; 
+                flex-direction: column;
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                padding: 10px 0;
+                border-top: 1px solid #f0f0f0;
+                z-index: 999; 
+            }
+
+            .nav.active ul {
+                display: flex;
+            }
+            
+            .nav ul li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .nav ul li a {
+                 padding: 10px 20px; 
+                 display: block;
+            }
+            
+            /* Mobile Sprachwechsler Stil */
+            .nav ul .language-switcher.mobile-only {
+                margin-left: 0;
+                border-top: 1px solid #f0f0f0;
+            }
+            .nav ul .language-switcher.mobile-only a {
+                border: none;
+                color: #a78b71;
+                font-weight: bold;
+                padding: 15px 20px;
+                display: block;
+            }
+            .nav ul .language-switcher.mobile-only a:hover {
+                color: #6a5a4a;
+                background-color: #fcfcfc;
+            }
+            
+            .about-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index_de.html">
+                <img src="Viola Bennet.jpg" alt="Viola Bennet Logo">
+            </a>
+        </div>
+        <button class="menu-toggle" aria-label="Navigation umschalten">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav">
+            <ul>
+                <li><a href="index_de.html">Startseite</a></li>
+                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Schmuckkollektion</a></li>
+                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Liebesromane</a></li>
+                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Musik</a></li>
+                <li><a href="about_de.html">Markengeschichte</a></li>
+                <li><a href="contact_de.html">Kontakt</a></li>
+                
+                <div class="language-switcher desktop-only">
+                    <a href="about.html" title="Switch to English version">EN</a>
+                </div>
+                
+                <div class="language-switcher mobile-only">
+                    <a href="about.html" title="Switch to English version">ENGLISH</a>
+                </div>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <section class="about-hero">
+        <h1>Die Geschichte von Viola Bennet</h1>
+        <p>Wo Kunst, Emotion und ewige Schönheit zusammenfließen.</p>
+    </section>
+
+    <section class="content-section">
+        <div class="text-content">
+            <h2>Ein Erbe, verwurzelt in Romantik und Kunst</h2>
+            <p>Viola Bennet ist nicht nur eine Marke; es ist ein Universum, das durch die Verschmelzung von Kunst und tiefen Emotionen geschaffen wurde. Aus dem Wunsch geboren, tiefgreifende Gefühle – ob aus Musik, Literatur oder einem fesselnden Bild – in greifbare Formen zu übersetzen, etablierte sich Viola Bennet als multidisziplinäre Künstlerin.</p>
+            <p>Unsere Reise begann mit der Veröffentlichung ergreifender Liebesromane und erweiterte sich schnell in die Welt der Musikproduktion, wo jede Note eine Geschichte ist. Dieser ganzheitliche Ansatz stellt sicher, dass jedes Schmuckstück, jede Melodie und jedes geschriebene Wort die gleiche Signatur authentischer Leidenschaft und zeitloser Eleganz trägt.</p>
+        </div>
+        <div class="image-container">
+            <img src="Viola Bennet.jpg" alt="Viola Bennet Markenbild">
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="text-content">
+            <h2>Schmuck: Tragbare Poesie</h2>
+            <p>Unsere Schmuckkollektionen sind das Herzstück der Viola Bennet Erfahrung. Wir glauben, dass Schmuck mehr als Dekoration ist – er ist tragbare Poesie. Jedes Stück wird sorgfältig entworfen, um die Themen aus Violas Erzählungen und Musik widerzuspiegeln: unerschütterliche Liebe, stille Stärke und fesselndes Geheimnis.</p>
+            <p>Unter Verwendung ethisch einwandfreier Materialien und mit Fokus auf nachhaltige, detaillierte Handwerkskunst stellen wir sicher, dass jedes Armband, jede Halskette oder jeder Ring ein geschätztes Andenken ist. Sie sind als moderne Erbstücke konzipiert, die die Lücke zwischen klassischer Romantik und zeitgenössischer Ästhetik schließen.</p>
+        </div>
+        <div class="image-container">
+            <img src="viola bennet shop.jpg" alt="Viola Bennet Schmuckgeschäft Innenansicht">
+        </div>
+    </section>
+    
+    <section class="philosophy-section">
+        <h2>Unsere Kernphilosophie</h2>
+        <div class="philosophy-grid">
+            <div class="grid-item">
+                <i class="fas fa-heart"></i>
+                <h3>Emotion</h3>
+                <p>Wir durchdringen jede Kreation mit tiefen, resonanten Emotionen, wodurch jedes Produkt eine Reflexion innerer Erfahrung wird.</p>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-palette"></i>
+                <h3>Kunstfertigkeit</h3>
+                <p>Von der Designskizze bis zur finalen Politur liegt unser Fokus auf künstlerischer Exzellenz und der Harmonie von Form und Funktion.</p>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-gem"></i>
+                <h3>Zeitlosigkeit</h3>
+                <p>Unser Ziel ist es, Objekte von bleibender Schönheit zu schaffen, die flüchtigen Trends widerstehen, für dauerhaften Stil und Qualität.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-nav">
+            <a href="contact_de.html">Kontakt</a>
+            <a href="policy_de.html">Datenschutzerklärung</a>
+            <a href="faq_de.html">FAQ</a>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/elainevane0049?s=21" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/share/17Z9MRvZac/?mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">&copy; 2025 Offizielle Viola Bennet Webseite. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('.nav');
+
+            if (menuToggle && nav) {
+                menuToggle.addEventListener('click', function() {
+                    // Schaltet die 'active' Klasse um, um das Menü anzuzeigen
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

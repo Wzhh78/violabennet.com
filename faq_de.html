@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viola Bennet | Frequently Asked Questions (FAQ)</title>
+    <title>Viola Bennet | Häufig gestellte Fragen (FAQ)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 <style>
-        /* Core styles (Copied from index/contact for consistency) */
+        /* Core styles (Kopiert von index/contact für Konsistenz) */
         body {
             font-family: 'Georgia', serif; 
             margin: 0;
@@ -16,7 +16,7 @@
             line-height: 1.6;
         }
         
-        /* --- START: Language Switcher Styles (新增) --- */
+        /* --- START: Sprachwechsler-Stile (Kopiert und angepasst) --- */
         .language-switcher a {
             text-decoration: none;
             color: #a78b71;
@@ -27,17 +27,16 @@
             border-radius: 3px;
             transition: all 0.3s;
             margin-left: 20px;
-            white-space: nowrap; /* Prevent button wrapping */
+            white-space: nowrap; 
         }
         .language-switcher a:hover {
             background-color: #a78b71;
             color: white;
         }
-        /* Visibility control */
+        /* Sichtbarkeit Kontrolle */
         .desktop-only { display: flex; align-items: center; }
         .mobile-only { display: none; }
-        /* --- END: Language Switcher Styles --- */
-
+        /* --- END: Sprachwechsler-Stile --- */
 
         .header {
             background-color: #ffffff;
@@ -64,22 +63,20 @@
             margin-right: 0; 
         }
 
-        /* 关键修改：让 ul 成为 flex 容器以容纳语言切换器 */
         .nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
-            align-items: center; /* Vertical center alignment */
+            align-items: center; /* Wichtig für den Sprachwechsler */
         }
 
         .nav ul li {
             margin-left: 30px;
         }
         
-        /* 确保语言切换器在 desktop-only 状态下正确显示在 nav ul 内部 */
         .nav ul .language-switcher.desktop-only {
-            margin-left: 30px; /* Match navigation link spacing */
+            margin-left: 30px; 
         }
 
         .nav ul li a {
@@ -91,8 +88,8 @@
             position: relative;
         }
         
-        /* Current page active style */
-        .nav ul li a[href="faq.html"] {
+        /* Aktive Seite Stil */
+        .nav ul li a[href="faq_de.html"] {
              color: #a78b71;
         }
 
@@ -108,16 +105,16 @@
         }
 
         .nav ul li a:hover::after,
-        .nav ul li a[href="faq.html"]::after { /* Active state also shows underline */
+        .nav ul li a[href="faq_de.html"]::after { /* Aktiver Stil auch mit Unterstrich */
             width: 100%;
         }
         .nav ul li a:hover {
             color: #a78b71; 
         }
 
-        /* 汉堡包菜单按钮样式 (新增) - START */
+        /* Hamburger Menü Button */
         .menu-toggle {
-            display: none; /* Default hidden on desktop */
+            display: none; 
             background: none;
             border: none;
             font-size: 24px;
@@ -125,7 +122,6 @@
             color: #4a4a4a; 
             padding: 0;
         }
-        /* 汉堡包菜单按钮样式 (新增) - END */
         
         /* Footer Styles */
         .footer {
@@ -174,7 +170,7 @@
 
         /* ========== FAQ Specific Styles ========== */
         .faq-hero {
-            background-color: #e3ebe8; /* Light blue/green hint */
+            background-color: #e3ebe8; 
             padding: 80px 50px;
             text-align: center;
         }
@@ -261,7 +257,7 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            /* Mobile visibility control */
+            /* Mobile Sichtbarkeit Kontrolle */
             .desktop-only { display: none; }
             .mobile-only { display: block; }
             
@@ -269,17 +265,17 @@
                 padding: 15px 20px;
             }
             
-            /* 1. Show menu button on mobile */
+            /* 1. Hamburger Menü */
             .menu-toggle {
                 display: block; 
             }
             
-            /* 2. Hide nav list by default and stack it */
+            /* 2. Mobile Navigation */
             .nav ul {
-                display: none; /* Default hidden */
+                display: none; 
                 flex-direction: column;
                 position: absolute;
-                top: 70px; /* Below header height */
+                top: 70px; 
                 left: 0;
                 width: 100%;
                 background-color: #ffffff;
@@ -289,12 +285,11 @@
                 z-index: 999; 
             }
 
-            /* 3. Show nav list when active */
             .nav.active ul {
                 display: flex;
             }
             
-            /* 4. Adjust mobile menu item spacing */
+            /* 4. Anpassung der mobilen Menüpunkte */
             .nav ul li {
                 margin: 0;
                 text-align: center;
@@ -302,13 +297,12 @@
             }
             
             .nav ul li a {
-                 padding: 10px 20px; /* Increase click area */
+                 padding: 10px 20px; 
                  display: block;
             }
             
-            /* Mobile language button styling adjustment */
+            /* Mobile Sprachwechsler Stil */
             .nav ul .language-switcher.mobile-only {
-                /* Remove desktop margin-left */
                 margin-left: 0;
                 border-top: 1px solid #f0f0f0;
             }
@@ -323,8 +317,8 @@
                 color: #6a5a4a;
                 background-color: #fcfcfc;
             }
-            
-            /* FAQ Responsive adjustments */
+
+            /* FAQ Responsive Anpassungen */
             .faq-hero h1 {
                 font-size: 36px;
             }
@@ -345,97 +339,98 @@
 
     <header class="header">
         <div class="logo">
-            <a href="index.html">
+            <a href="index_de.html">
                 <img src="Viola Bennet.jpg" alt="Viola Bennet Logo">
             </a>
         </div>
-        <button class="menu-toggle" aria-label="Toggle navigation">
+        <button class="menu-toggle" aria-label="Navigation umschalten">
             <i class="fas fa-bars"></i>
         </button>
         <nav class="nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Jewelry Collection</a></li>
-                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Love Novels</a></li>
-                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music</a></li>
-                <li><a href="about.html">Brand Story</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="index_de.html">Startseite</a></li>
+                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Schmuckkollektion</a></li>
+                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Liebesromane</a></li>
+                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Musik</a></li>
+                <li><a href="about_de.html">Markengeschichte</a></li>
+                <li><a href="contact_de.html">Kontakt</a></li>
                 
                 <div class="language-switcher desktop-only">
-                    <a href="faq_de.html" title="Zur deutschen Version wechseln">DE</a>
+                    <a href="faq.html" title="Switch to English version">EN</a>
                 </div>
                 
                 <div class="language-switcher mobile-only">
-                    <a href="faq_de.html" title="Zur deutschen Version wechseln">DEUTSCH</a>
+                    <a href="faq.html" title="Switch to English version">ENGLISH</a>
                 </div>
+                
             </ul>
         </nav>
     </header>
 
     <section class="faq-hero">
-        <h1>Frequently Asked Questions (FAQ)</h1>
-        <p>Answers to your questions about our jewelry, novels, and brand.</p>
+        <h1>Häufig gestellte Fragen (FAQ)</h1>
+        <p>Antworten auf Ihre Fragen zu unserem Schmuck, Romanen und unserer Marke.</p>
     </section>
 
     <div class="faq-content">
 
         <div class="faq-item">
             <div class="faq-question" id="q1">
-                Where can I learn more about Viola Bennet and her creative vision?
+                Wo kann ich mehr über Viola Bennet und ihre kreative Vision erfahren?
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Viola Bennet is a brand encompassing jewelry, love novels, and original music. You can find more details about her journey, inspiration, and philosophy on the <a href="about.html">Brand Story</a> page.</p>
+                <p>Viola Bennet ist eine Marke, die Schmuck, Liebesromane und Originalmusik umfasst. Weitere Details über ihre Reise, Inspiration und Philosophie finden Sie auf der Seite <a href="about_de.html">Markengeschichte</a>.</p>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" id="q2">
-                What materials are used in Viola Bennet jewelry?
+                Welche Materialien werden im Viola Bennet Schmuck verwendet?
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Our jewelry pieces are made using high-quality, ethically sourced materials, primarily including S925 sterling silver and high-grade alloys, often plated with precious metals like 14k or 18k gold. We use AAA-grade cubic zirconia (CZ) or semi-precious stones for sparkle.</p>
+                <p>Unsere Schmuckstücke werden aus hochwertigen, ethisch einwandfreien Materialien hergestellt, hauptsächlich aus S925 Sterlingsilber und hochwertigen Legierungen, oft plattiert mit Edelmetallen wie 14-karätigem oder 18-karätigem Gold. Für den Glanz verwenden wir Zirkonia in AAA-Qualität (CZ) oder Halbedelsteine.</p>
             </div>
         </div>
         
         <div class="faq-item">
             <div class="faq-question" id="q3">
-                Where can I buy Viola Bennet's novels?
+                Wo kann ich Viola Bennets Romane kaufen?
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Viola Bennet's love novels are available through major international online retailers, including Amazon worldwide. You can find direct links on our <a href="index.html#novels">Home Page (Novels section)</a> or by searching for "Viola Bennet" on Amazon.</p>
+                <p>Viola Bennets Liebesromane sind über große internationale Online-Händler, einschließlich Amazon weltweit, erhältlich. Direkte Links finden Sie auf unserer <a href="index_de.html#novels">Startseite (Romane-Bereich)</a> oder indem Sie auf Amazon nach "Viola Bennet" suchen.</p>
             </div>
         </div>
         
         <div class="faq-item">
             <div class="faq-question" id="q4">
-                Where can I listen to Viola Bennet's original music?
+                Wo kann ich Viola Bennets Originalmusik hören?
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Her original music, often the official soundtracks for her novels, is primarily hosted on her official YouTube channel. You can access it directly via the <a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music link</a> in our navigation bar.</p>
+                <p>Ihre Originalmusik, oft der offizielle Soundtrack zu ihren Romanen, wird hauptsächlich auf ihrem offiziellen YouTube-Kanal gehostet. Sie können direkt über den <a href="https://www.youtube.com/@ViolaBennet" target="_blank">Musik-Link</a> in unserer Navigationsleiste darauf zugreifen.</p>
             </div>
         </div>
         
         <div class="faq-item">
             <div class="faq-question" id="q5">
-                What are the shipping costs and delivery times?
+                Wie hoch sind die Versandkosten und Lieferzeiten?
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>Since Viola Bennet jewelry is currently sold primarily through platforms like Amazon, shipping costs and delivery times are governed by the specific policies of that platform in your region. Please refer to your cart and checkout page on Amazon for accurate, up-to-date information.</p>
+                <p>Da Viola Bennet Schmuck derzeit hauptsächlich über Plattformen wie Amazon verkauft wird, richten sich die Versandkosten und Lieferzeiten nach den spezifischen Richtlinien dieser Plattform in Ihrer Region. Bitte beachten Sie Ihren Warenkorb und die Kassenseite auf Amazon für genaue, aktuelle Informationen.</p>
             </div>
         </div>
 
         <div class="faq-item">
             <div class="faq-question" id="q6">
-                What is your policy on returns and exchanges?
+                Wie lautet Ihre Richtlinie für Rückgaben und Umtausch?
                 <i class="fas fa-chevron-down"></i>
             </div>
             <div class="faq-answer">
-                <p>All returns and exchanges follow the policy of the channel through which you made the purchase (such as Amazon). Please contact the customer service of the original platform or reach out to us via our <a href="contact.html">contact email</a> for assistance.</p>
+                <p>Alle Rückgaben und Umtausche folgen der Richtlinie des Kanals, über den Sie den Kauf getätigt haben (z. B. Amazon). Bitte wenden Sie sich an den Kundendienst der ursprünglichen Plattform oder kontaktieren Sie uns über unsere <a href="contact_de.html">Kontakt-E-Mail</a> für Unterstützung.</p>
             </div>
         </div>
 
@@ -443,9 +438,9 @@
 
     <footer class="footer">
         <div class="footer-nav">
-            <a href="contact.html">Contact Us</a>
-            <a href="policy.html">Privacy Policy</a>
-            <a href="faq.html" style="color: white;">FAQ</a>
+            <a href="contact_de.html">Kontakt</a>
+            <a href="policy_de.html">Datenschutzerklärung</a>
+            <a href="faq_de.html" style="color: white;">FAQ</a>
         </div>
         <div class="social-links">
             <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -454,11 +449,10 @@
             <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-        <p class="copyright">&copy; 2025 Viola Bennet Official Website. All Rights Reserved.</p>
+        <p class="copyright">&copy; 2025 Offizielle Viola Bennet Webseite. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script>
-        // Mobile menu toggle script
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.querySelector('.menu-toggle');
             const nav = document.querySelector('.nav');
@@ -469,14 +463,14 @@
                 });
             }
             
-            // FAQ accordion script
+            // FAQ Interaktionsskript (Akkordeon-Effekt)
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', () => {
                     const answer = question.nextElementSibling;
                     const isActive = question.classList.contains('active');
                     
-                    // Close all other open FAQ items
+                    // Schließt alle anderen geöffneten FAQ-Elemente
                     document.querySelectorAll('.faq-question').forEach(q => {
                         if (q !== question) {
                             q.classList.remove('active');
@@ -484,13 +478,13 @@
                         }
                     });
 
-                    // Toggle the state of the currently clicked item
+                    // Schaltet den Status des aktuell geklickten Elements um
                     if (isActive) {
                         question.classList.remove('active');
                         answer.style.maxHeight = null;
                     } else {
                         question.classList.add('active');
-                        // Set max-height to scrollHeight to smoothly expand the element
+                        // Trick: Setze max-height auf scrollHeight, um das Element sanft auf volle Höhe auszuklappen
                         answer.style.maxHeight = answer.scrollHeight + "px";
                     }
                 });

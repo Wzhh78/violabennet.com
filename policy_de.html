@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Viola Bennet</title>
+    <title>Datenschutzerklärung | Viola Bennet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 <style>
-        /* Core styles (Copied from index/contact for consistency) */
+        /* Core styles (Kopiert von index/contact für Konsistenz) */
         body {
             font-family: 'Georgia', serif; 
             margin: 0;
@@ -16,7 +16,7 @@
             line-height: 1.6;
         }
         
-        /* --- START: Language Switcher Styles (新增) --- */
+        /* --- START: Sprachwechsler-Stile (Kopiert und angepasst) --- */
         .language-switcher a {
             text-decoration: none;
             color: #a78b71;
@@ -27,16 +27,16 @@
             border-radius: 3px;
             transition: all 0.3s;
             margin-left: 20px;
-            white-space: nowrap; /* Prevent button wrapping */
+            white-space: nowrap; 
         }
         .language-switcher a:hover {
             background-color: #a78b71;
             color: white;
         }
-        /* Visibility control */
+        /* Sichtbarkeit Kontrolle */
         .desktop-only { display: flex; align-items: center; }
         .mobile-only { display: none; }
-        /* --- END: Language Switcher Styles --- */
+        /* --- END: Sprachwechsler-Stile --- */
 
         .header {
             background-color: #ffffff;
@@ -68,16 +68,15 @@
             padding: 0;
             margin: 0;
             display: flex;
-            align-items: center; /* 垂直居中对齐语言切换器 */
+            align-items: center; 
         }
 
         .nav ul li {
             margin-left: 30px;
         }
         
-        /* 确保语言切换器在 desktop-only 状态下正确显示在 nav ul 内部 */
         .nav ul .language-switcher.desktop-only {
-            margin-left: 30px; /* Match navigation link spacing */
+            margin-left: 30px; 
         }
 
         .nav ul li a {
@@ -89,8 +88,8 @@
             position: relative;
         }
         
-        /* Current page active style */
-        .nav ul li a[href="policy.html"] {
+        /* Aktive Seite Stil */
+        .nav ul li a[href="policy_de.html"] {
              color: #a78b71;
         }
 
@@ -106,16 +105,16 @@
         }
 
         .nav ul li a:hover::after,
-        .nav ul li a[href="policy.html"]::after { /* Active state also shows underline */
+        .nav ul li a[href="policy_de.html"]::after { /* Aktiver Stil auch mit Unterstrich */
             width: 100%;
         }
         .nav ul li a:hover {
             color: #a78b71; 
         }
 
-        /* 汉堡包菜单按钮样式 (新增) - START */
+        /* Hamburger Menü Button */
         .menu-toggle {
-            display: none; /* 默认在桌面端隐藏 */
+            display: none; 
             background: none;
             border: none;
             font-size: 24px;
@@ -123,7 +122,6 @@
             color: #4a4a4a; 
             padding: 0;
         }
-        /* 汉堡包菜单按钮样式 (新增) - END */
         
         /* Footer Styles */
         .footer {
@@ -173,7 +171,7 @@
         /* ========== Policy Specific Styles ========== */
 
         .policy-hero {
-            background-color: #e8e3ef; /* Light purple/grey hint */
+            background-color: #e8e3ef; 
             padding: 80px 50px;
             text-align: center;
         }
@@ -227,7 +225,7 @@
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            /* Mobile visibility control */
+            /* Mobile Sichtbarkeit Kontrolle */
             .desktop-only { display: none; }
             .mobile-only { display: block; }
             
@@ -235,17 +233,17 @@
                 padding: 15px 20px;
             }
             
-            /* 1. Show menu button on mobile */
+            /* 1. Hamburger Menü */
             .menu-toggle {
                 display: block; 
             }
             
-            /* 2. Hide nav list by default and stack it */
+            /* 2. Mobile Navigation */
             .nav ul {
-                display: none; /* Default hidden */
+                display: none; 
                 flex-direction: column;
                 position: absolute;
-                top: 70px; /* Below header height */
+                top: 70px; 
                 left: 0;
                 width: 100%;
                 background-color: #ffffff;
@@ -255,12 +253,11 @@
                 z-index: 999; 
             }
 
-            /* 3. Show nav list when active */
             .nav.active ul {
                 display: flex;
             }
             
-            /* 4. Adjust mobile menu item spacing */
+            /* 4. Anpassung der mobilen Menüpunkte */
             .nav ul li {
                 margin: 0;
                 text-align: center;
@@ -272,9 +269,8 @@
                  display: block;
             }
             
-            /* Mobile language button styling adjustment */
+            /* Mobile Sprachwechsler Stil */
             .nav ul .language-switcher.mobile-only {
-                /* Remove desktop margin-left */
                 margin-left: 0;
                 border-top: 1px solid #f0f0f0;
             }
@@ -290,7 +286,7 @@
                 background-color: #fcfcfc;
             }
 
-            /* Policy 响应式调整 */
+            /* Policy Responsive Anpassungen */
             .policy-hero h1 {
                 font-size: 36px;
             }
@@ -310,74 +306,74 @@
 
     <header class="header">
         <div class="logo">
-            <a href="index.html">
+            <a href="index_de.html">
                 <img src="Viola Bennet.jpg" alt="Viola Bennet Logo">
             </a>
         </div>
-        <button class="menu-toggle" aria-label="Toggle navigation">
+        <button class="menu-toggle" aria-label="Navigation umschalten">
             <i class="fas fa-bars"></i>
         </button>
         <nav class="nav">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Jewelry Collection</a></li>
-                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Love Novels</a></li>
-                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Music</a></li>
-                <li><a href="about.html">Brand Story</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="index_de.html">Startseite</a></li>
+                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=1084a673-5bb8-4573-a0b8-d6ec4867e7e6&ref_=ast_bln" target="_blank">Schmuckkollektion</a></li>
+                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Liebesromane</a></li>
+                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Musik</a></li>
+                <li><a href="about_de.html">Markengeschichte</a></li>
+                <li><a href="contact_de.html">Kontakt</a></li>
                 
                 <div class="language-switcher desktop-only">
-                    <a href="policy_de.html" title="Zur deutschen Version wechseln">DE</a>
+                    <a href="policy.html" title="Switch to English version">EN</a>
                 </div>
                 
                 <div class="language-switcher mobile-only">
-                    <a href="policy_de.html" title="Zur deutschen Version wechseln">DEUTSCH</a>
+                    <a href="policy.html" title="Switch to English version">ENGLISH</a>
                 </div>
             </ul>
         </nav>
     </header>
 
     <section class="policy-hero">
-        <h1>Privacy Policy</h1>
-        <p>Your privacy and trust are of the utmost importance to us.</p>
+        <h1>Datenschutzerklärung</h1>
+        <p>Ihre Privatsphäre und Ihr Vertrauen sind uns von größter Bedeutung.</p>
     </section>
 
     <div class="policy-content">
-        <p><strong>Effective Date: November 10, 2025</strong></p>
-        <p>Viola Bennet operates this website. This page informs you of our policies regarding the collection, use, and disclosure of Personal Information we receive from users of the Site.</p>
+        <p><strong>Gültig ab: 10. November 2025</strong></p>
+        <p>Viola Bennet betreibt diese Website. Diese Seite informiert Sie über unsere Richtlinien bezüglich der Erfassung, Nutzung und Offenlegung von personenbezogenen Daten, die wir von Nutzern der Website erhalten.</p>
 
-        <h2>1. Information Collection and Use</h2>
-        <p>While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to, your name and email address ("Personal Information").</p>
+        <h2>1. Erfassung und Nutzung von Informationen</h2>
+        <p>Während der Nutzung unserer Website bitten wir Sie möglicherweise, uns bestimmte persönlich identifizierbare Informationen zur Verfügung zu stellen, die zur Kontaktaufnahme oder Identifizierung verwendet werden können. Dazu gehören unter anderem Ihr Name und Ihre E-Mail-Adresse ("Personenbezogene Daten").</p>
 
-        <h2>2. Log Data</h2>
-        <p>Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages, and other statistics.</p>
-        <p>We use Google Analytics to collect, monitor, and analyze this data to improve our service.</p>
+        <h2>2. Protokolldaten (Log Data)</h2>
+        <p>Wie viele Website-Betreiber erfassen wir Informationen, die Ihr Browser sendet, wenn Sie unsere Website besuchen ("Protokolldaten"). Diese Protokolldaten können Informationen wie die Internetprotokoll ("IP")-Adresse Ihres Computers, den Browsertyp, die Browserversion, die von Ihnen besuchten Seiten unserer Website, die Uhrzeit und das Datum Ihres Besuchs, die auf diesen Seiten verbrachte Zeit und andere Statistiken umfassen.</p>
+        <p>Wir verwenden Google Analytics, um diese Daten zu erfassen, zu überwachen und zu analysieren, um unseren Dienst zu verbessern.</p>
 
-        <h2>3. Communications</h2>
-        <p>We may use your Personal Information to contact you with newsletters, marketing or promotional materials, and other information that pertains to Viola Bennet's products or services, but only if you have explicitly opted in to receive such communications.</p>
+        <h2>3. Kommunikation</h2>
+        <p>Wir verwenden Ihre personenbezogenen Daten möglicherweise, um Ihnen Newsletter, Marketing- oder Werbematerialien und andere Informationen zu den Produkten oder Dienstleistungen von Viola Bennet zuzusenden, jedoch nur, wenn Sie dem Erhalt dieser Mitteilungen ausdrücklich zugestimmt haben.</p>
 
         <h2>4. Cookies</h2>
-        <p>Cookies are files with a small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your computer's hard drive. We use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+        <p>Cookies sind Dateien mit einer geringen Datenmenge, die eine anonyme eindeutige Kennung enthalten können. Cookies werden von einer Website an Ihren Browser gesendet und auf der Festplatte Ihres Computers gespeichert. Wir verwenden "Cookies", um Informationen zu sammeln. Sie können Ihren Browser anweisen, alle Cookies abzulehnen oder anzuzeigen, wenn ein Cookie gesendet wird.</p>
 
-        <h2>5. Security</h2>
-        <p>The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.</p>
+        <h2>5. Sicherheit</h2>
+        <p>Die Sicherheit Ihrer personenbezogenen Daten ist uns wichtig, aber denken Sie daran, dass keine Methode der Übertragung über das Internet oder der elektronischen Speicherung 100% sicher ist. Obwohl wir uns bemühen, kommerziell akzeptable Mittel zum Schutz Ihrer personenbezogenen Daten einzusetzen, können wir deren absolute Sicherheit nicht garantieren.</p>
 
-        <h2>6. Third-Party Services</h2>
-        <p>Our website may contain links to other sites (such as Amazon, Instagram, YouTube) that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+        <h2>6. Dienste von Drittanbietern</h2>
+        <p>Unsere Website kann Links zu anderen Websites (wie Amazon, Instagram, YouTube) enthalten, die nicht von uns betrieben werden. Wenn Sie auf einen Link eines Drittanbieters klicken, werden Sie zu dessen Website weitergeleitet. Wir empfehlen Ihnen dringend, die Datenschutzerklärung jeder von Ihnen besuchten Website zu überprüfen. Wir haben keine Kontrolle über und übernehmen keine Verantwortung für den Inhalt, die Datenschutzrichtlinien oder die Praktiken von Websites oder Diensten Dritter.</p>
 
-        <h2>7. Changes to This Privacy Policy</h2>
-        <p>This Privacy Policy is effective as of November 10, 2025, and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page. We reserve the right to update or change our Privacy Policy at any time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+        <h2>7. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Diese Datenschutzerklärung ist gültig ab dem 10. November 2025 und bleibt in Kraft, mit Ausnahme zukünftiger Änderungen ihrer Bestimmungen, die sofort nach Veröffentlichung auf dieser Seite wirksam werden. Wir behalten uns das Recht vor, unsere Datenschutzerklärung jederzeit zu aktualisieren oder zu ändern. Wir werden Sie über alle Änderungen informieren, indem wir die neue Datenschutzerklärung auf dieser Seite veröffentlichen. Es wird Ihnen empfohlen, diese Datenschutzerklärung regelmäßig auf Änderungen zu überprüfen.</p>
 
-        <h2>8. Contact Us</h2>
-        <p>If you have any questions about this Privacy Policy, please contact us:</p>
-        <p>By email: <a href="mailto:info@violabennet.com">contact@violabennet.com</a></p>
+        <h2>8. Kontakt</h2>
+        <p>Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte:</p>
+        <p>Per E-Mail: <a href="mailto:info@violabennet.com">contact@violabennet.com</a></p>
     </div>
 
     <footer class="footer">
         <div class="footer-nav">
-            <a href="contact.html">Contact Us</a>
-            <a href="policy.html" style="color: white;">Privacy Policy</a>
-            <a href="faq.html">FAQ</a>
+            <a href="contact_de.html">Kontakt</a>
+            <a href="policy_de.html" style="color: white;">Datenschutzerklärung</a>
+            <a href="faq_de.html">FAQ</a>
         </div>
         <div class="social-links">
             <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -386,7 +382,7 @@
             <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
             <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
-        <p class="copyright">&copy; 2025 Viola Bennet Official Website. All Rights Reserved.</p>
+        <p class="copyright">&copy; 2025 Offizielle Viola Bennet Webseite. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script>
@@ -396,7 +392,7 @@
 
             if (menuToggle && nav) {
                 menuToggle.addEventListener('click', function() {
-                    // 切换 nav 元素的 'active' 类，CSS 通过这个类来显示菜单
+                    // Schaltet die 'active' Klasse um, um das Menü anzuzeigen
                     nav.classList.toggle('active');
                 });
             }
