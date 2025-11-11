@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viola Bennet | Official Portal - Jewelry 窶｢ Music 窶｢ Love Novels</title>
+    <title>Viola Bennet | Official Portal - Jewelry ・ Music ・ Love Novels</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
 <style>
         /* Basic Reset */
@@ -64,7 +64,6 @@
             margin-right: 0; 
         }
 
-        /* *** 关键修改 1: 确保 nav ul 包含语言切换器时保持桌面布局 *** */
         .nav ul {
             list-style: none;
             padding: 0;
@@ -77,7 +76,6 @@
             margin-left: 30px;
         }
         
-        /* 确保语言切换器在 desktop-only 状态下正确显示在 nav ul 内部 */
         .nav ul .language-switcher.desktop-only {
             margin-left: 30px; /* 匹配导航链接的间距 */
         }
@@ -303,37 +301,39 @@
             color: #999;
         }
 
-        /* Responsive adjustments */
+        /* ================================================= */
+        /* 响应式调整 - 核心部分，确保在小屏幕上正确显示 */
+        /* ================================================= */
+
         @media (max-width: 992px) {
+            /* 在平板尺寸上，卡片变为两列 */
             .category-item {
                 flex-basis: calc(50% - 30px);
             }
         }
 
         @media (max-width: 768px) {
-            /* 移动端可见性控制 */
-            .desktop-only { display: none; }
-            .mobile-only { display: block; }
             
-            /* 移动端布局调整 */
+            /* 移动端可见性控制：隐藏桌面元素，显示移动端元素 */
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+            
+            /* 头部导航栏调整 */
             .header {
                 padding: 15px 20px;
             }
-            /* 确保 logo 和 菜单/语言切换按钮 对齐 */
-            .header > .logo {
-                margin-right: auto; /* 推开右侧元素 */
-            }
-            .header > .menu-toggle {
-                margin-left: 20px;
+            
+            /* 显示汉堡菜单按钮 */
+            .menu-toggle {
+                display: block;
             }
             
             /* 导航菜单在移动端显示为堆叠列表 */
             .nav ul {
-                /* 覆盖桌面端的 flex display */
-                display: none; 
+                display: none; /* 默认隐藏 */
                 flex-direction: column;
                 position: absolute;
-                top: 70px; 
+                top: 70px; /* 位于头部下方 */
                 left: 0;
                 width: 100%;
                 background-color: #ffffff;
@@ -348,7 +348,7 @@
                 display: flex;
             }
             
-            /* 调整手机菜单项的间距 */
+            /* 调整手机菜单项的间距和显示方式 */
             .nav ul li {
                 margin: 0;
                 text-align: center;
@@ -362,7 +362,6 @@
             
             /* 移动端语言按钮样式调整，使之像菜单项 */
             .nav ul .language-switcher.mobile-only {
-                /* 移除桌面端的 margin-left */
                 margin-left: 0;
                 border-top: 1px solid #f0f0f0;
             }
@@ -378,31 +377,42 @@
                 background-color: #fcfcfc;
             }
 
-            /* 原有响应式样式 (不变...) */
+            /* Hero 部分 */
             .hero {
-                height: 450px;
+                height: 400px; /* 减少高度 */
             }
             .hero h1 {
-                font-size: 48px;
+                font-size: 36px; /* 减小标题字号 */
+                letter-spacing: 2px;
             }
             .hero p {
-                font-size: 20px;
+                font-size: 18px; /* 减小段落字号 */
+                margin-bottom: 30px;
             }
+            
+            /* 内容区域堆叠 */
             .section {
-                padding: 60px 20px;
+                padding: 50px 20px;
             }
             .category-grid {
-                flex-direction: column;
+                flex-direction: column; /* 垂直堆叠卡片 */
                 align-items: center;
+                gap: 30px; /* 增加垂直间距 */
             }
             .category-item {
-                flex-basis: 90%;
+                flex-basis: 100%; /* 卡片占据全宽 */
+                max-width: 100%; 
             }
+            .category-item img {
+                height: 250px; /* 调整图片高度 */
+            }
+
+            /* 页脚调整 */
             .footer {
                 padding: 30px 20px;
             }
             .footer-nav a {
-                display: block;
+                display: block; /* 垂直堆叠页脚链接 */
                 margin: 10px 0;
             }
         }
