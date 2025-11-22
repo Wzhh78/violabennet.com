@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 关键：禁止缩放，适配移动端视口 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Viola's Thread - Mobile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e; 
+            color: #fcfcfc;
+            font-family: 'Georgia', serif;
+            overflow: hidden; /* 禁止滚动 */
+            touch-action: none; /* 禁止默认触摸行为 */
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 画布全屏 */
+        canvas {
+            background: #25201b; 
+            display: block;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* 退出按钮：移动端加大触控面积 */
+        #exitBtn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #aaa;
+            border: 1px solid #555;
+            padding: 8px 15px;
+            font-size: 14px;
+            border-radius: 20px;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+
+        /* UI 覆盖层 */
+        #uiOverlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none; 
+            width: 90%;
+            max-width: 500px;
+            z-index: 10;
+        }
+
+        .message-box {
+            background: rgba(20, 20, 20, 0.95);
+            padding: 30px 20px;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+            pointer-events: auto;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+        }
+        
+        .hidden { display: none !important; }
+        
+        /* 顶部状态栏 */
+        .stat-bar {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #aaa;
+            z-index: 90;
+            pointer-events: none;
+        }
+        .highlight { color: #d4af37; font-weight: bold; }
+
+        button.primary-btn {
+            padding: 15px 30px; 
+            background: #d4af37; 
+            border: none; 
+            color: #222; 
+            font-weight: bold; 
+            font-family: serif;
+            font-size: 18px;
+            margin-top: 15px;
+            border-radius: 4px;
+            touch-action: manipulation;
+        }
+        
+        h1 { margin: 0 0 10px 0; color: #d4af37; font-size: 24px; }
+        p { color: #ccc; line-height: 1.5; font-size: 15px; margin: 0; }
+
+    </style>
+</head>
+<body>
+
+    <!-- 状态显示 -->
+    <div class="stat-bar" id="statBar">
+        <span>Level: <span id="levelTxt" class="highlight">-</span></span>
+        <span>Pearls: <span id="progressTxt" class="highlight">0/0</span></span>
+    </div>
+
+    <!-- 退出按钮 -->
+    <button id="exitBtn" class="hidden" onclick="quitGame()">✕ End</button>
+
+    <canvas id="gameCanvas"></canvas>
+    
+    <div id="uiOverlay">
+        <!-- 开始菜单 -->
+        <div id="startScreen" class="message-box">
+            <h1>Viola's Thread</h1>
+            <p style="margin-bottom: 15px;">Catch pearls. Design jewelry.</p>
+            
+            <!-- 针对手机优化的提示 -->
+            <div style="font-size:13px; color:#888; margin-bottom:20px; border-top:1px solid #444; padding-top:10px;">
+                <strong>How to Play:</strong><br>
+                <span class="desktop-hint">Use Arrow Keys</span>
+                <span class="mobile-hint">Touch & Drag anywhere to steer</span>
+            </div>
+            
+            <button class="primary-btn" onclick="startGame()">Start Designing</button>
+        </div>
+        
+        <!-- 结算界面 -->
+        <div id="levelEndScreen" class="message-box hidden">
+            <h2 id="designName" style="color: #fff; margin-top:0;">Design Complete</h2>
+            <p style="color:#d4af37; margin-bottom: 20px;">A beautiful piece created.</p>
+            <button class="primary-btn" onclick="nextLevel()">Next Level</button>
+        </div>
+    </div>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // --- 1. 屏幕适配逻辑 ---
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas(); // 初始化调用
+
+    // --- 2. 游戏配置 ---
+    const COLORS = {
+        white: '#F9F7F2', pink: '#FFD1DC', gold: '#FFD700',
+        blue: '#87CEEB', silver: '#C0C0C0', thread: '#d4af37' 
+    };
+
+    const LEVELS = [
+        { name: "Morning Dew Bracelet", target: 10, speed: 2.5, colors: ['white'] }, // 手机上速度稍微快一点点因为摇杆更灵活
+        { name: "Ocean's Heart", target: 15, speed: 3.0, colors: ['white', 'blue', 'silver'] },
+        { name: "Sunset Gala", target: 20, speed: 3.5, colors: ['gold', 'pink', 'white'] }
+    ];
+
+    let currentLevelIdx = 0;
+    let gameState = 'MENU'; 
+    let frameId;
+    
+    let head = { x: 0, y: 0, vx: 0, vy: 0, angle: 0 };
+    let pathHistory = []; 
+    let collectedPearls = [];
+    let floatingPearls = [];
+
+    // --- 3. 控制逻辑 (键盘 + 触摸) ---
+    let keys = { ArrowUp: false, ArrowDown: false, ArrowLeft: false, ArrowRight: false };
+    
+    // 触摸状态
+    let touchActive = false;
+    let touchStart = { x: 0, y: 0 }; // 摇杆中心
+    let touchCurrent = { x: 0, y: 0 }; // 摇杆当前位置
+
+    // 键盘监听
+    window.addEventListener('keydown', e => {
+        if(keys.hasOwnProperty(e.code)) keys[e.code] = true;
+        if(e.code === 'Enter') {
+            if(gameState === 'MENU') startGame();
+            else if(gameState === 'FINISHED') nextLevel();
+        }
+    });
+    window.addEventListener('keyup', e => {
+        if(keys.hasOwnProperty(e.code)) keys[e.code] = false;
+    });
+
+    // 触摸监听 (核心手机控制代码)
+    canvas.addEventListener('touchstart', e => {
+        e.preventDefault();
+        if (gameState !== 'PLAYING') return;
+        touchActive = true;
+        touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        touchCurrent = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }, {passive: false});
+
+    canvas.addEventListener('touchmove', e => {
+        e.preventDefault(); 
+        if (!touchActive) return;
+        touchCurrent = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }, {passive: false});
+
+    canvas.addEventListener('touchend', e => {
+        e.preventDefault();
+        touchActive = false;
+    });
+
+    // --- 4. 游戏流程函数 ---
+    function startGame() {
+        document.getElementById('startScreen').classList.add('hidden');
+        document.getElementById('exitBtn').classList.remove('hidden');
+        resetLevel();
+        gameState = 'PLAYING';
+        loop();
+    }
+
+    function quitGame() {
+        cancelAnimationFrame(frameId);
+        gameState = 'MENU';
+        document.getElementById('startScreen').classList.remove('hidden');
+        document.getElementById('levelEndScreen').classList.add('hidden');
+        document.getElementById('exitBtn').classList.add('hidden');
+        currentLevelIdx = 0;
+        ctx.fillStyle = '#25201b';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        document.getElementById('levelTxt').innerText = "-";
+        document.getElementById('progressTxt').innerText = "0/0";
+    }
+
+    function nextLevel() {
+        if (currentLevelIdx < LEVELS.length - 1) {
+            currentLevelIdx++;
+            resetLevel();
+            gameState = 'PLAYING';
+            document.getElementById('levelEndScreen').classList.add('hidden');
+        } else {
+            alert("Collection Complete!");
+            quitGame();
+        }
+    }
+
+    function resetLevel() {
+        const lvl = LEVELS[currentLevelIdx];
+        head = { x: canvas.width/2, y: canvas.height/2, vx: lvl.speed, vy: 0, angle: 0 };
+        pathHistory = [];
+        for(let i=0; i<500; i++) pathHistory.push({x: head.x, y: head.y});
+        
+        collectedPearls = [];
+        floatingPearls = [];
+        for(let k=0; k<5; k++) spawnPearl(); 
+        
+        document.getElementById('levelTxt').innerText = currentLevelIdx + 1;
+        updateProgressUI();
+    }
+
+    function updateProgressUI() {
+        const lvl = LEVELS[currentLevelIdx];
+        document.getElementById('progressTxt').innerText = `${collectedPearls.length}/${lvl.target}`;
+    }
+
+    function spawnPearl() {
+        const lvl = LEVELS[currentLevelIdx];
+        const colorKey = lvl.colors[Math.floor(Math.random() * lvl.colors.length)];
+        let margin = 50;
+        floatingPearls.push({
+            x: Math.random() * (canvas.width - margin*2) + margin,
+            y: Math.random() * (canvas.height - margin*2) + margin,
+            color: COLORS[colorKey],
+            size: 8 + Math.random() * 4, 
+            floatOffset: Math.random() * Math.PI * 2
+        });
+    }
+
+    function update() {
+        if (gameState !== 'PLAYING') return;
+
+        const lvl = LEVELS[currentLevelIdx];
+        let targetVx = head.vx;
+        let targetVy = head.vy;
+        let hasInput = false;
+
+        // A. 键盘输入优先
+        if (keys.ArrowUp) { targetVx = 0; targetVy = -lvl.speed; hasInput = true; }
+        if (keys.ArrowDown) { targetVx = 0; targetVy = lvl.speed; hasInput = true; }
+        if (keys.ArrowLeft) { targetVx = -lvl.speed; targetVy = 0; hasInput = true; }
+        if (keys.ArrowRight) { targetVx = lvl.speed; targetVy = 0; hasInput = true; }
+
+        // B. 触摸输入覆盖 (虚拟摇杆逻辑)
+        if (touchActive && !hasInput) {
+            let dx = touchCurrent.x - touchStart.x;
+            let dy = touchCurrent.y - touchStart.y;
+            let dist = Math.sqrt(dx*dx + dy*dy);
+            
+            // 如果手指拖动超过一定距离，才开始转向 (防止误触)
+            if (dist > 10) {
+                // 归一化方向并乘以速度
+                targetVx = (dx / dist) * lvl.speed;
+                targetVy = (dy / dist) * lvl.speed;
+            }
+        }
+
+        // 惯性平滑
+        let inertia = 0.1; 
+        head.vx += (targetVx - head.vx) * inertia;
+        head.vy += (targetVy - head.vy) * inertia;
+
+        // 速度恒定化
+        let currentSpeed = Math.sqrt(head.vx*head.vx + head.vy*head.vy);
+        if (currentSpeed > 0.1) {
+            head.vx = (head.vx / currentSpeed) * lvl.speed;
+            head.vy = (head.vy / currentSpeed) * lvl.speed;
+        }
+        
+        head.angle = Math.atan2(head.vy, head.vx);
+        head.x += head.vx;
+        head.y += head.vy;
+
+        // 穿墙
+        if (head.x < 0) head.x = canvas.width;
+        if (head.x > canvas.width) head.x = 0;
+        if (head.y < 0) head.y = canvas.height;
+        if (head.y > canvas.height) head.y = 0;
+
+        // 轨迹
+        pathHistory.unshift({x: head.x, y: head.y});
+        if (pathHistory.length > 3000) pathHistory.pop();
+
+        // 收集判定
+        for (let i = floatingPearls.length - 1; i >= 0; i--) {
+            let p = floatingPearls[i];
+            // 手机上判定范围稍微加大一点 (35px)，让操作更容易
+            let dist = Math.hypot(head.x - p.x, head.y - p.y);
+
+            if (dist < 35) { 
+                collectedPearls.push({ color: p.color, size: p.size });
+                floatingPearls.splice(i, 1);
+                spawnPearl(); 
+                updateProgressUI();
+                if (collectedPearls.length >= lvl.target) finishLevel();
+            }
+        }
+        if(floatingPearls.length < 4) spawnPearl();
+    }
+
+    function finishLevel() {
+        gameState = 'FINISHED';
+        document.getElementById('levelEndScreen').classList.remove('hidden');
+    }
+
+    function draw() {
+        // 清屏
+        ctx.fillStyle = '#25201b';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 绘制虚拟摇杆 (仅在触摸时显示)
+        if (touchActive && gameState === 'PLAYING') {
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 2;
+            ctx.arc(touchStart.x, touchStart.y, 50, 0, Math.PI*2); // 底座
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
+            ctx.arc(touchCurrent.x, touchCurrent.y, 20, 0, Math.PI*2); // 摇杆头
+            ctx.fill();
+        }
+
+        // 画丝线
+        if (collectedPearls.length > 0 && (gameState === 'PLAYING' || gameState === 'FINISHED')) {
+            if (gameState === 'FINISHED') {
+                drawFinishedJewelry();
+            } else {
+                ctx.beginPath();
+                ctx.moveTo(head.x, head.y);
+                let maxLen = collectedPearls.length * 25 + 50;
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.4)'; 
+                ctx.lineWidth = 1.5;
+                for(let i=0; i<maxLen; i+=5) {
+                   if(pathHistory[i]) ctx.lineTo(pathHistory[i].x, pathHistory[i].y);
+                }
+                ctx.stroke();
+
+                let spacing = 25;
+                for (let i = 0; i < collectedPearls.length; i++) {
+                    let posIndex = (i + 1) * spacing;
+                    if (pathHistory[posIndex]) {
+                        let pos = pathHistory[posIndex];
+                        drawPearl(pos.x, pos.y, collectedPearls[i].color, collectedPearls[i].size);
+                    }
+                }
+            }
+        }
+
+        // 画浮动珍珠
+        if (gameState === 'PLAYING') {
+            let time = Date.now() / 800;
+            floatingPearls.forEach(p => {
+                let floatY = Math.sin(time + p.floatOffset) * 3;
+                drawPearl(p.x, p.y + floatY, p.color, p.size, true);
+            });
+        }
+
+        // 画针
+        if (gameState === 'PLAYING') {
+            ctx.save();
+            ctx.translate(head.x, head.y);
+            ctx.rotate(head.angle);
+            ctx.fillStyle = '#d4af37';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#d4af37';
+            ctx.beginPath();
+            ctx.moveTo(15, 0); 
+            ctx.lineTo(-5, 4);
+            ctx.lineTo(-5, -4);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    function drawPearl(x, y, color, size, glow=false) {
+        ctx.beginPath();
+        ctx.shadowBlur = glow ? 15 : 2;
+        ctx.shadowColor = glow ? color : 'rgba(0,0,0,0.3)';
+        ctx.fillStyle = color;
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.beginPath();
+        ctx.arc(x - size/3, y - size/3, size/5, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    function drawFinishedJewelry() {
+        let centerX = canvas.width / 2;
+        let centerY = canvas.height / 2;
+        // 手机上如果竖屏，半径稍微小一点，防止溢出
+        let minDim = Math.min(canvas.width, canvas.height);
+        let radius = minDim * 0.25; 
+        let count = collectedPearls.length;
+        let angleStep = (Math.PI * 2) / count;
+
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, Math.PI*2);
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        for (let i = 0; i < count; i++) {
+            let angle = i * angleStep - Math.PI/2;
+            let x = centerX + Math.cos(angle) * radius;
+            let y = centerY + Math.sin(angle) * radius;
+            drawPearl(x, y, collectedPearls[i].color, collectedPearls[i].size);
+        }
+    }
+
+    function loop() {
+        if(gameState === 'PLAYING' || gameState === 'FINISHED') {
+            update();
+            draw();
+            frameId = requestAnimationFrame(loop);
+        }
+    }
+    
+    // 初始画面
+    ctx.fillStyle = '#25201b';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+</script>
+</body>
+</html>

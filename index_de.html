@@ -2,47 +2,57 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <!-- 核心：确保手机端视口正确缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viola Bennet | Offizielles Portal - Schmuck ・ Musik ・ Liebesromane</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<style>
-        /* Basic Reset */
+    <title>Viola Bennet | Offizielles Portal - Schmuck, Musik & Romane</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+    <style>
+        /* --- System Reset & Variables (与英文版保持完全一致) --- */
+        :root {
+            --primary-gold: #a78b71;
+            --text-dark: #4a4a4a;
+            --text-light: #666;
+            --bg-light: #fcfcfc;
+            --bg-offset: #f7f7f7;
+            --font-serif: 'Georgia', serif;
+        }
+
         body {
-            font-family: 'Georgia', serif; 
+            font-family: var(--font-serif); 
             margin: 0;
             padding: 0;
-            background-color: #fcfcfc; 
-            color: #4a4a4a; 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
             line-height: 1.6;
+            overflow-x: hidden; 
         }
 
-        /* --- START: Sprachumschalter-Stile --- */
+        a { text-decoration: none; transition: 0.3s; }
+        
+        /* --- Language Switcher --- */
         .language-switcher a {
-            text-decoration: none;
-            color: #a78b71;
-            font-size: 16px;
+            color: var(--primary-gold);
+            font-size: 14px;
             font-weight: 500;
-            border: 1px solid #a78b71;
-            padding: 5px 8px;
-            border-radius: 3px;
-            transition: all 0.3s;
+            border: 1px solid var(--primary-gold);
+            padding: 5px 10px;
+            border-radius: 20px; 
             margin-left: 20px;
-            white-space: nowrap; /* Verhindert Zeilenumbruch */
+            white-space: nowrap;
         }
         .language-switcher a:hover {
-            background-color: #a78b71;
+            background-color: var(--primary-gold);
             color: white;
         }
-        /* Sichtbarkeitskontrolle */
         .desktop-only { display: flex; align-items: center; }
         .mobile-only { display: none; }
-        /* --- END: Sprachumschalter-Stile --- */
 
-        /* Header Navigation Bar - Elegant and Clean */
+        /* --- Header --- */
         .header {
             background-color: #ffffff;
             border-bottom: 1px solid #f0f0f0; 
-            padding: 15px 50px;
+            padding: 15px 50px; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -52,40 +62,23 @@
             z-index: 1000;
         }
 
-        .logo a {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 40px; 
-            width: auto; 
-            margin-right: 0; 
-        }
+        .logo img { height: 50px; width: auto; } 
 
         .nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex; /* Stellt sicher, dass alle internen Elemente in einer Reihe sind */
-            align-items: center; /* Vertikale Zentrierung */
+            display: flex; 
+            align-items: center; 
         }
 
-        .nav ul li {
-            margin-left: 30px;
-        }
-        
-        .nav ul .language-switcher.desktop-only {
-            margin-left: 30px; 
-        }
+        .nav ul li { margin-left: 30px; }
+        .nav ul .language-switcher.desktop-only { margin-left: 30px; }
 
         .nav ul li a {
-            text-decoration: none;
             color: #555;
             font-size: 16px;
             font-weight: 500;
-            transition: color 0.3s;
             position: relative;
         }
         
@@ -96,31 +89,25 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: #a78b71; 
+            background-color: var(--primary-gold); 
             transition: width 0.3s ease-in-out;
         }
 
-        .nav ul li a:hover::after {
-            width: 100%;
-        }
-        .nav ul li a:hover {
-            color: #a78b71; 
-        }
+        .nav ul li a:hover::after { width: 100%; }
+        .nav ul li a:hover { color: var(--primary-gold); }
         
-        /* Hamburger-Menü-Schaltfläche (Neu) */
         .menu-toggle {
-            display: none; /* Standardmäßig auf dem Desktop versteckt */
+            display: none;
             background: none;
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #4a4a4a; 
-            padding: 0;
+            color: var(--text-dark); 
         }
 
-        /* Hero Section/Main Visual */
+        /* --- Hero Section --- */
         .hero {
-            background: url('hero-banner.jpg') no-repeat center center/cover; 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hero-banner.jpg') no-repeat center center/cover; 
             height: 600px;
             display: flex;
             justify-content: center;
@@ -130,296 +117,266 @@
             position: relative;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.25); 
-        }
-
-        .hero-content {
-            z-index: 10;
-        }
-
         .hero h1 {
             font-size: 64px; 
             margin-bottom: 15px;
             font-weight: 300;
             letter-spacing: 6px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            padding: 0 20px; 
         }
 
         .hero p {
-            font-size: 26px;
+            font-size: 24px;
             margin-bottom: 45px;
             font-style: italic;
             font-weight: 300;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            padding: 0 20px;
         }
 
+        /* CTA Button */
         .cta-button {
-            background-color: #a78b71; 
+            background-color: var(--primary-gold); 
             color: white;
             padding: 14px 35px;
-            text-decoration: none;
-            font-size: 19px;
-            border: 2px solid #a78b71;
-            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+            font-size: 18px;
+            border: 1px solid var(--primary-gold);
             display: inline-block;
             letter-spacing: 1px;
+            margin-bottom: 10px; 
         }
-
         .cta-button:hover {
             background-color: transparent;
+            color: white; 
             border-color: white;
-            color: white;
         }
-        
-        /* Content Sections - Categorized Display */
-        .section {
-            padding: 80px 50px;
-            text-align: center;
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
         }
+        .btn-outline:hover { background: var(--primary-gold); color: white; border-color: var(--primary-gold); }
 
+
+        /* --- Waterfall Layout --- */
+        .section-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
         .section-title {
             font-size: 38px;
-            margin-bottom: 60px;
             color: #6a5a4a; 
-            position: relative;
             display: inline-block;
             font-weight: 400;
             letter-spacing: 1px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
         }
+
+        .waterfall-section {
+            padding: 60px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid #eee;
+        }
+        .waterfall-section:last-child { border-bottom: none; }
+
+        .content-split {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .waterfall-section:nth-of-type(even) .content-split {
+            flex-direction: row-reverse;
+        }
+
+        .split-text { flex: 1; }
+        .split-visual { flex: 1; display: flex; justify-content: center; }
         
-        .section-title::after {
+        .split-text h3 {
+            font-size: 32px;
+            color: #6a5a4a;
+            margin-bottom: 20px;
+        }
+        .split-text p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+
+        .cover-img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-height: 450px;
+        }
+
+        /* --- Jewelry Grid --- */
+        .jewelry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+            width: 100%;
+        }
+        .jewelry-card {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .jewelry-card:hover { transform: translateY(-5px); }
+        .jewelry-thumb {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            background: #eee;
+        }
+        .jewelry-name { font-size: 16px; margin: 10px 0; color: #444; }
+        .amazon-buy-btn {
+            display: inline-block;
+            background: #FF9900;
+            color: #111;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+        .amazon-buy-btn:hover { background: #e38a00; }
+
+        /* --- Store Buttons --- */
+        .store-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            color: #555;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-size: 14px;
+        }
+        .store-btn:hover { background: #f0f0f0; color: black; border-color: #999; }
+        .store-btn i { font-size: 18px; }
+
+        /* --- Music Styles --- */
+        .spotify-btn {
+            background: #1DB954; 
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-family: sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .spotify-btn:hover { background: #1ed760; color: white; }
+        .album-cover { border-radius: 5px; }
+
+        /* --- Game Portal --- */
+        #game-portal {
+            background: #1a1a1a;
+            color: white;
+            padding: 80px 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+        #game-portal::before {
             content: '';
             position: absolute;
-            width: 60px; 
-            height: 1px;
-            bottom: -15px;
-            left: calc(50% - 30px);
-            background-color: #ccc;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(167,139,113,0.15) 0%, rgba(0,0,0,0) 60%);
+            animation: pulse 10s infinite;
         }
+        @keyframes pulse { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
 
-        .category-grid {
-            display: flex;
-            justify-content: center; 
-            gap: 40px; 
-            flex-wrap: wrap;
+        .game-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .game-tag { color: var(--primary-gold); letter-spacing: 2px; text-transform: uppercase; font-size: 14px; display: block; margin-bottom: 10px; }
+        .game-title { font-size: 40px; margin-bottom: 20px; color: #f0f0f0; }
+        .game-desc { font-size: 18px; color: #aaa; margin-bottom: 40px; }
+        .game-btn {
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px 40px;
+            font-family: var(--font-serif);
+            font-style: italic;
         }
+        .game-btn:hover { background: white; color: black; }
 
-        .category-item {
-            flex-basis: calc(33% - 40px); 
-            max-width: 400px; 
-            text-align: left;
-            overflow: hidden;
-            background-color: white;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 5px; 
-        }
-
-        .category-item:hover {
-            transform: translateY(-8px); 
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .category-item img {
-            width: 100%;
-            height: 300px; 
-            object-fit: cover; 
-            display: block;
-            transition: opacity 0.3s;
-        }
-        
-        .category-item:hover img {
-             opacity: 0.85; 
-        }
-
-        .item-info {
-            padding: 25px; 
-        }
-
-        .item-info h3 {
-            font-size: 24px;
-            margin-top: 0;
-            color: #6a5a4a;
-            margin-bottom: 10px;
-        }
-
-        .item-info p {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 25px;
-        }
-        
-        /* Footer */
+        /* --- Footer --- */
         .footer {
             background-color: #333;
             color: white;
             padding: 50px 50px; 
             text-align: center;
         }
-        
-        .footer-nav {
-            margin-bottom: 25px;
-        }
-        
-        .footer-nav a {
-            color: #bbb;
-            text-decoration: none;
-            margin: 0 18px;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
+        .footer-nav a, .social-links a { color: #bbb; margin: 0 15px; }
+        .footer-nav a:hover, .social-links a:hover { color: var(--primary-gold); }
+        .social-links { margin: 30px 0 20px; font-size: 24px; }
+        .copyright { font-size: 13px; color: #999; }
 
-        .footer-nav a:hover {
-            color: white;
-        }
-
-        .social-links {
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: #bbb;
-            font-size: 24px;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #a78b71; 
-        }
-        
-        .copyright {
-            font-size: 13px;
-            color: #999;
-        }
-
-        /* ================================================= */
-        /* Responsive Anpassung - Mobiloptimierung */
-        /* ================================================= */
-
-        @media (max-width: 992px) {
-            /* Auf Tablet-Größe werden die Karten zu zwei Spalten */
-            .category-item {
-                flex-basis: calc(50% - 30px);
-            }
-        }
-
+        /* ========================================= */
+        /* ★★★ 移动端适配 (Responsive) ★★★ */
+        /* ========================================= */
         @media (max-width: 768px) {
-            
-            /* Mobile Sichtbarkeitskontrolle: Desktop-Elemente ausblenden, Mobile-Elemente anzeigen */
             .desktop-only { display: none !important; }
             .mobile-only { display: block !important; }
             
-            /* Anpassung der Kopfzeile */
-            .header {
-                padding: 15px 20px;
-            }
+            .header { padding: 15px 20px; } 
+            .menu-toggle { display: block; }
             
-            /* Hamburger-Menü-Schaltfläche anzeigen */
-            .menu-toggle {
-                display: block;
-            }
-            
-            /* Navigationsmenü wird mobil zu einer gestapelten Liste */
             .nav ul {
-                display: none; /* Standardmäßig verstecken */
+                display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 70px; /* Unterhalb der Kopfzeile */
-                left: 0;
-                width: 100%;
-                background-color: #ffffff;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-                padding: 10px 0;
-                border-top: 1px solid #f0f0f0;
-                z-index: 999; 
+                top: 70px; left: 0; width: 100%;
+                background: white;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px 0;
             }
+            .nav.active ul { display: flex; }
+            .nav ul li { margin: 0; text-align: center; width: 100%; }
+            .nav ul li a { padding: 15px; display: block; border-bottom: 1px solid #f0f0f0; }
 
-            /* Im aktiven Zustand Navigationsliste anzeigen */
-            .nav.active ul {
-                display: flex;
-            }
-            
-            /* Anpassen des Abstands der Menüpunkte */
-            .nav ul li {
-                margin: 0;
-                text-align: center;
-                width: 100%;
-            }
-            
-            .nav ul li a {
-                 padding: 10px 20px; 
-                 display: block;
-            }
-            
-            /* Mobile Sprachschalter-Stile an Menüpunkte anpassen */
-            .nav ul .language-switcher.mobile-only {
-                margin-left: 0;
-                border-top: 1px solid #f0f0f0;
-            }
-            .nav ul .language-switcher.mobile-only a {
-                border: none;
-                color: #a78b71;
-                font-weight: bold;
-                padding: 15px 20px;
-                display: block;
-            }
-            .nav ul .language-switcher.mobile-only a:hover {
-                color: #6a5a4a;
-                background-color: #fcfcfc;
-            }
+            .hero { height: auto; padding: 100px 20px; } 
+            .hero h1 { font-size: 36px; letter-spacing: 2px; } 
+            .hero p { font-size: 18px; }
+            .cta-button { width: 100%; box-sizing: border-box; text-align: center; margin-left: 0 !important; margin-bottom: 15px; }
 
-            /* Hero-Bereich */
-            .hero {
-                height: 400px; /* Höhe reduzieren */
-            }
-            .hero h1 {
-                font-size: 36px; /* Schriftgröße des Titels reduzieren */
-                letter-spacing: 2px;
-            }
-            .hero p {
-                font-size: 18px; /* Schriftgröße des Absatzes reduzieren */
-                margin-bottom: 30px;
-            }
+            .waterfall-section { padding: 50px 20px; }
+            .content-split { flex-direction: column !important; gap: 30px; }
+            .waterfall-section:nth-of-type(even) .content-split { flex-direction: column !important; }
             
-            /* Inhalt gestapelt */
-            .section {
-                padding: 50px 20px;
-            }
-            .category-grid {
-                flex-direction: column; /* Karten vertikal stapeln */
-                align-items: center;
-                gap: 30px; 
-            }
-            .category-item {
-                flex-basis: 100%; /* Karten nehmen die volle Breite ein */
-                max-width: 100%; 
-            }
-            .category-item img {
-                height: 250px; /* Bildhöhe anpassen */
-            }
-
-            /* Fußzeilenanpassung */
-            .footer {
-                padding: 30px 20px;
-            }
-            .footer-nav a {
-                display: block; /* Fußzeilen-Links vertikal stapeln */
-                margin: 10px 0;
-            }
+            .split-visual, .split-text { width: 100%; text-align: center; }
+            .split-text p { max-width: 100%; text-align: left; }
+            
+            .store-buttons { justify-content: center; }
+            .jewelry-grid { grid-template-columns: 1fr; gap: 30px; } 
+            
+            #game-portal { padding: 60px 20px; }
+            .game-title { font-size: 32px; }
+            
+            .footer { padding: 40px 20px; }
+            .footer-nav a { display: block; margin: 10px 0; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header / Navigation -->
     <header class="header">
         <div class="logo">
             <a href="index_de.html">
@@ -427,95 +384,181 @@
             </a>
         </div>
         
-        <button class="menu-toggle" aria-label="Navigation umschalten">
+        <button class="menu-toggle" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
         <nav class="nav">
             <ul>
+                <!-- 德语导航 -->
                 <li><a href="index_de.html">Startseite</a></li>
-                <li><a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=e4e35090-c5a7-4f76-81ff-cb99dcd1ff4c&ref_=ast_bln" target="_blank">Schmuckkollektion</a></li>
-                <li><a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" target="_blank">Liebesromane</a></li>
-                <li><a href="https://www.youtube.com/@ViolaBennet" target="_blank">Musik</a></li>
-                <li><a href="about_de.html">Markengeschichte</a></li>
-                <li><a href="contact_de.html">Kontakt</a></li>
+                <li><a href="#jewelry-section">Schmuck</a></li>
+                <li><a href="#novel-section">Romane</a></li>
+                <li><a href="#music-section">Musik</a></li>
+                <li><a href="#game-portal" style="color: #a78b71;">Das Atelier</a></li>
                 
+                <!-- 桌面端语言切换 (Link back to English) -->
                 <div class="language-switcher desktop-only">
-                    <a href="index.html" title="Switch to English version">EN</a>
+                    <a href="index.html">EN</a>
                 </div>
                 
-                <div class="language-switcher mobile-only">
-                    <a href="index.html" title="Switch to English version">ENGLISH</a>
+                <!-- 手机端语言切换 -->
+                <div class="language-switcher mobile-only" style="margin-top: 15px;">
+                    <a href="index.html" style="margin: 0;">ENGLISH VERSION</a>
                 </div>
-                
             </ul>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero" id="hero-section">
         <div class="hero-content">
             <h1>Viola Bennet</h1>
-            <p>Eleganz trifft Gefühl – Wo Kunst und Liebe sich vereinen</p>
-            <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=e4e35090-c5a7-4f76-81ff-cb99dcd1ff4c&ref_=ast_bln" class="cta-button" target="_blank">Neueste Schmuckstücke entdecken</a>
+            <p>Eleganz trifft Emotion</p>
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 300px; margin: 0 auto;">
+                <a href="#novel-section" class="cta-button" style="background:transparent; border-color:white;">Die Geschichte lesen</a>
+                <a href="#jewelry-section" class="cta-button">Das Design tragen</a>
+            </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Unsere Welt entdecken</h2>
-        
-        <div class="category-grid">
-            
-            <div class="category-item">
-                <img src="jewelry-collection.jpg" alt="Viola Bennet Schmuck" onerror="this.src='https://via.placeholder.com/400x300?text=Schmuckkollektion';">
-                <div class="item-info">
-                    <h3><i class="fa-solid fa-gem"></i> Zeitloser Liebes-Schmuck</h3>
-                    <p>Inspiriert von den poetischen Versen ihrer Romane, glänzt jedes Stück mit der Essenz dauerhafter Liebe.</p>
-                    <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21?ingress=2&lp_context_asin=B0FMQL7CW6&lp_context_query=viola%20bennet%20bracelet&visitId=e4e35090-c5a7-4f76-81ff-cb99dcd1ff4c&ref_=ast_bln" class="cta-button" style="background-color: transparent; color: #a78b71; border-color: #a78b71;" target="_blank">Kollektion auf Amazon ansehen</a>
-                </div>
-            </div>
+    <!-- Main Content -->
+    <div class="section-header">
+        <h2 class="section-title">Entdecken Sie unsere Welt</h2>
+    </div>
 
-            <div class="category-item">
-                <img src="love-novels.jpg" alt="Viola Bennet Liebesromane" onerror="this.src='https://via.placeholder.com/400x300?text=Liebesromane';">
-                <div class="item-info">
-                    <h3><i class="fa-solid fa-book"></i> Bezaubernde Liebesromane</h3>
-                    <p>Tauchen Sie ein in Viola Bennets epische Geschichten über Romantik, Leidenschaft und verwobene Schicksale.</p>
-                    <a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1B5NBMYMCLV7U&dib=eyJ2IjoiMSJ9.lUTs_f_PhCusTTjReK0t9n5Y9xoI6HnjpmQTaRdCMivtl6TJ2S1oFJcibRGv2KC3uz1JT4ifIsm92tvJ5-r7FwgZMKLxtqBYn23kxzjZz1mGQT2HNFsSNp82Kmic0VH5j-UUAUEPYs8Xut2bxNiknWJP3whlml-18S5-Ksc060aYFKPAc0KYAYXEdTFFd6TUEfHfVtJH9-oklYo2MTQbYzwYcdohD1H-Zkiu34ZlV3c.76ZRBkbXWWrXoUG3vCcpPukaA62cykuS7jxyMtfSOJ0&dib_tag=se&keywords=viola+bennett+novel&qid=1762784461&sprefix=viola+bennet+novel%2Caps%2C131&sr=8-2" class="cta-button" style="background-color: transparent; color: #a78b71; border-color: #a78b71;" target="_blank">Buch auf Amazon kaufen</a>
-                </div>
+    <!-- 1. JEWELRY SECTION -->
+    <section id="jewelry-section" class="waterfall-section">
+        <div class="content-split">
+            <div class="split-text" style="flex: 0 0 30%;">
+                <h3>Zeitloser Schmuck</h3>
+                <p>Entworfen von Viola Bennet persönlich. Jede Perle, jede Kurve ist inspiriert von einem Moment der Liebe aus ihren Geschichten. Jetzt für Sie zum Tragen.</p>
+                <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21" target="_blank" class="btn-outline" style="padding: 10px 20px; display:inline-block; margin-bottom: 20px;">Zum Amazon Store</a>
             </div>
             
-            <div class="category-item">
-                <img src="original-music.jpg" alt="Viola Bennet Musik" onerror="this.src='https://via.placeholder.com/400x300?text=Original+Soundtrack';">
-                <div class="item-info">
-                    <h3><i class="fa-solid fa-music"></i> Stimmungsreiche Originalmusik</h3>
-                    <p>Erleben Sie die offiziellen Soundtracks, persönlich von Viola Bennet komponiert, um Geschichten zum Leben zu erwecken.</p>
-                    <a href="https://www.youtube.com/@ViolaBennet" class="cta-button" style="background-color: transparent; color: #a78b71; border-color: #a78b71;" target="_blank">Jetzt anhören</a>
+            <div class="split-visual" style="flex: 1;">
+                <div class="jewelry-grid">
+                    <!-- 商品 1 -->
+                    <div class="jewelry-card">
+                        <img src="jewelry-1.jpg" alt="Pearl Bracelet" class="jewelry-thumb">
+                        <div class="jewelry-name">The Moonlight Pearl Bracelet</div>
+                        <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21" target="_blank" class="amazon-buy-btn">
+                            <i class="fab fa-amazon"></i> Auf Amazon kaufen
+                        </a>
+                    </div>
+                    <!-- 商品 2 -->
+                    <div class="jewelry-card">
+                        <img src="jewelry-2.jpg" alt="Drop Earrings" class="jewelry-thumb">
+                        <div class="jewelry-name">Serenaho Elegant Pearl Bracelet</div>
+                        <a href="https://www.amazon.de/Turquoise-Freshwater-Jewellery-Decoration-freshwater/dp/B0FL2QKKBJ" target="_blank" class="amazon-buy-btn">
+                            <i class="fab fa-amazon"></i> Auf Amazon kaufen
+                        </a>
+                    </div>
+                    <!-- 商品 3 -->
+                    <div class="jewelry-card">
+                        <img src="jewelry-3.jpg" alt="Promise Ring" class="jewelry-thumb">
+                        <div class="jewelry-name">Flower Verse Pearl Bracelet</div>
+                        <a href="https://www.amazon.de/Handmade-Freshwater-Bracelet-centimetres-cultured/dp/B0FKNC5T79" target="_blank" class="amazon-buy-btn">
+                            <i class="fab fa-amazon"></i> Auf Amazon kaufen
+                        </a>
+                    </div>
                 </div>
             </div>
-            
         </div>
     </section>
-    
-    <section class="section" style="background-color: #f7f7f7;">
+
+    <!-- 2. NOVELS SECTION -->
+    <section id="novel-section" class="waterfall-section">
+        <div class="content-split">
+            <div class="split-visual">
+                <img src="love-novels.jpg" alt="Viola Bennet Novel Cover" class="cover-img" onerror="this.src='https://via.placeholder.com/350x500?text=Novel+Cover+Art'">
+            </div>
+            <div class="split-text">
+                <h3>Die Liebesromane</h3>
+                <p>Tauchen Sie ein in die Welt von Elaine Vane und Viola Bennet. Eine epische Geschichte über Romantik, Leidenschaft und die Geheimnisse, die in den Schmuckdesigns verborgen liegen.</p>
+                <p><strong>Jetzt erhältlich auf Ihrer Lieblingsplattform:</strong></p>
+                
+                <div class="store-buttons">
+                    <a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/" target="_blank" class="store-btn">
+                        <i class="fab fa-amazon"></i> Amazon
+                    </a>
+                    <a href="#" target="_blank" class="store-btn">
+                        <i class="fab fa-apple"></i> Apple Books
+                    </a>
+                    <a href="#" target="_blank" class="store-btn">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MUSIC SECTION -->
+    <section id="music-section" class="waterfall-section">
+        <div class="content-split">
+            <div class="split-text">
+                <h3>Original Soundtrack: "In Your Light"</h3>
+                <p>Musik komponiert von Viola Bennet. Hören Sie die Melodien, die die Geschichten inspiriert haben. Mit der Hit-Single "In Your Light" und 8 weiteren emotionalen Titeln.</p>
+                
+                <a href="https://open.spotify.com/" target="_blank" class="spotify-btn">
+                    <i class="fab fa-spotify"></i> Auf Spotify hören
+                </a>
+                <br><br>
+                <a href="https://www.youtube.com/@ViolaBennet" target="_blank" style="color: #666; font-size: 14px; text-decoration: underline;">Auch auf YouTube verfügbar</a>
+            </div>
+            <div class="split-visual">
+                <img src="original-music.jpg" alt="In Your Light Album Cover" class="cover-img album-cover" onerror="this.src='https://via.placeholder.com/400x400?text=Album+Cover+Art'">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. GAME PORTAL -->
+    <section id="game-portal">
+        <div class="game-content">
+            <span class="game-tag" style="color: #d4af37; border: 1px solid #d4af37; padding: 2px 8px; border-radius: 4px;">
+                Jetzt verfügbar
+            </span>
+            
+            <h2 class="game-title" style="margin-top: 15px;">
+                <i class="fas fa-gamepad"></i> Violas Faden
+            </h2>
+            
+            <p class="game-desc">
+                Treten Sie ein in die Gedankenwelt der Designerin.<br>
+                Fangen Sie die Inspirationsperlen und kreieren Sie Ihr eigenes Schmuck-Meisterwerk.<br>
+                <span style="font-size: 14px; color: #888;">(Optimiert für Handy & Desktop)</span>
+            </p>
+            
+            <a href="game.html" class="game-btn" style="text-decoration: none; display: inline-block; margin-top: 20px;">
+                Das Atelier betreten &rarr;
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" style="background-color: #f7f7f7; padding: 60px 20px; text-align: center;">
         <h2 class="section-title"><i class="fa-solid fa-heart"></i> Über Viola Bennet</h2>
-        <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-            <p style="font-size: 19px; margin-bottom: 40px; color: #555;">Viola Bennet ist mehr als nur ein Name; sie verkörpert **die leidenschaftliche Suche nach Schönheit** und **die unendliche Sehnsucht nach echtem Gefühl**. Von den zarten Worten ihrer Romane bis zum Glanz ihrer Juwelen vereint sie Kunst, Liebe und Eleganz meisterhaft.</p>
-            <a href="about_de.html" class="cta-button" style="background-color: #a78b71; color: white; border-color: #a78b71;">Erfahren Sie mehr über Violas Welt</a>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 18px; color: #555;">Viola Bennet ist mehr als nur ein Name; sie verkörpert das leidenschaftliche Streben nach Schönheit. Von zarten Worten bis zu funkelnden Juwelen verbindet sie Kunst, Liebe und Eleganz.</p>
+            <br>
+            <a href="about.html" style="color: #a78b71; font-weight: bold;">Markengeschichte lesen &rarr;</a>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-nav">
-            <a href="contact_de.html">Kontakt</a>
-            <a href="policy_de.html">Datenschutzerklärung</a>
-            <a href="faq_de.html">FAQ</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="policy.html">Datenschutzerklärung</a>
+            <a href="faq.html">FAQ</a>
         </div>
         <div class="social-links">
-            <a href="https://www.instagram.com/violabennet2025/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://x.com/elainevane0049?s=21" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.facebook.com/share/17Z9MRvZac/?mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://tiktok.com/@violabennet2025/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@ViolaBennet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/violabennet2025/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/elainevane0049?s=21" target="_blank"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/share/17Z9MRvZac/?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/@violabennet2025/" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@ViolaBennet" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
-        <p class="copyright">&copy; 2025 Viola Bennet Offizielle Website. Alle Rechte vorbehalten.</p>
+        <p class="copyright">&copy; 2025 Viola Bennet Official Website. Alle Rechte vorbehalten.</p>
     </footer>
 
     <script>
@@ -525,7 +568,6 @@
 
             if (menuToggle && nav) {
                 menuToggle.addEventListener('click', function() {
-                    // Schaltet die 'active'-Klasse des nav-Elements um, wodurch das Menü über CSS angezeigt wird
                     nav.classList.toggle('active');
                 });
             }
