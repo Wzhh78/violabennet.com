@@ -5,10 +5,10 @@
     <!-- 核心：确保手机端视口正确缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viola Bennet | Offizielles Portal - Schmuck, Musik & Romane</title>
-    <!-- 引入 Font Awesome 图标库 -->
+    <!-- 引入 Font Awesome 图标库 (包含 Etsy, Amazon, YouTube, Spotify 等图标) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
     <style>
-        /* --- System Reset & Variables (与英文版保持完全一致) --- */
+        /* --- System Reset & Variables --- */
         :root {
             --primary-gold: #a78b71;
             --text-dark: #4a4a4a;
@@ -144,6 +144,7 @@
             display: inline-block;
             letter-spacing: 1px;
             margin-bottom: 10px; 
+            text-align: center;
         }
         .cta-button:hover {
             background-color: transparent;
@@ -212,7 +213,7 @@
             max-height: 450px;
         }
 
-        /* --- Jewelry Grid --- */
+        /* --- Jewelry Grid & Buttons (Updated) --- */
         .jewelry-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); 
@@ -234,9 +235,22 @@
             margin-bottom: 15px;
             background: #eee;
         }
-        .jewelry-name { font-size: 16px; margin: 10px 0; color: #444; }
+        .jewelry-name { font-size: 16px; margin: 10px 0; color: #444; min-height: 45px; }
+
+        /* 按钮容器 */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Amazon Button */
         .amazon-buy-btn {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: #FF9900;
             color: #111;
             font-size: 13px;
@@ -245,8 +259,30 @@
             border-radius: 3px;
             font-family: sans-serif;
             text-decoration: none;
+            width: 100%; /* 全宽 */
+            box-sizing: border-box;
+            gap: 6px;
         }
-        .amazon-buy-btn:hover { background: #e38a00; }
+        .amazon-buy-btn:hover { background: #e38a00; color: #000; }
+
+        /* Etsy Button (NEW) */
+        .etsy-buy-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F56400; /* Etsy 品牌橙色 */
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 3px;
+            font-family: sans-serif;
+            text-decoration: none;
+            width: 100%; /* 全宽 */
+            box-sizing: border-box;
+            gap: 6px;
+        }
+        .etsy-buy-btn:hover { background: #d45400; color: white; }
 
         /* --- Store Buttons --- */
         .store-buttons {
@@ -414,9 +450,25 @@
         <div class="hero-content">
             <h1>Viola Bennet</h1>
             <p>Eleganz trifft Emotion</p>
-            <div style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 300px; margin: 0 auto;">
-                <a href="#novel-section" class="cta-button" style="background:transparent; border-color:white;">Die Geschichte lesen</a>
-                <a href="#jewelry-section" class="cta-button">Das Design tragen</a>
+            
+            <!-- 3个按钮容器：德语版 -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; width: 100%; max-width: 800px; margin: 0 auto;">
+                
+                <!-- 1. 小说入口 -->
+                <a href="#novel-section" class="cta-button" style="background:transparent; border-color:white; min-width: 180px;">
+                    Die Geschichte lesen
+                </a>
+                
+                <!-- 2. 珠宝入口 -->
+                <a href="#jewelry-section" class="cta-button" style="min-width: 180px;">
+                    Das Design tragen
+                </a>
+
+                <!-- 3. 音乐入口 -->
+                <a href="#music-section" class="cta-button" style="background:transparent; border-color:white; min-width: 180px;">
+                    Die Melodie hören
+                </a>
+
             </div>
         </div>
     </section>
@@ -432,7 +484,16 @@
             <div class="split-text" style="flex: 0 0 30%;">
                 <h3>Zeitloser Schmuck</h3>
                 <p>Entworfen von Viola Bennet persönlich. Jede Perle, jede Kurve ist inspiriert von einem Moment der Liebe aus ihren Geschichten. Jetzt für Sie zum Tragen.</p>
-                <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21" target="_blank" class="btn-outline" style="padding: 10px 20px; display:inline-block; margin-bottom: 20px;">Zum Amazon Store</a>
+                
+                <!-- 两个店铺的总链接 -->
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21" target="_blank" class="btn-outline" style="padding: 10px 20px; font-size: 14px;">
+                        <i class="fab fa-amazon"></i> Amazon Store
+                    </a>
+                    <a href="https://www.etsy.com/de/shop/ViolaBennetJewelry?ref=shop_profile&listing_id=4416467229" target="_blank" class="btn-outline" style="padding: 10px 20px; font-size: 14px;">
+                        <i class="fab fa-etsy"></i> Etsy Store
+                    </a>
+                </div>
             </div>
             
             <div class="split-visual" style="flex: 1;">
@@ -441,25 +502,40 @@
                     <div class="jewelry-card">
                         <img src="jewelry-1.jpg" alt="Pearl Bracelet" class="jewelry-thumb">
                         <div class="jewelry-name">The Moonlight Pearl Bracelet</div>
-                        <a href="https://www.amazon.de/stores/page/48592DCD-3DD3-41CE-9ABB-10D365DC6F21" target="_blank" class="amazon-buy-btn">
-                            <i class="fab fa-amazon"></i> Auf Amazon kaufen
-                        </a>
+                        <div class="btn-container">
+                            <a href="https://www.amazon.de/Viola-Bennet-Damenarmband-S%C3%BC%C3%9Fwasserperlen-Dunkelgr%C3%BCnen/dp/B0FK7W2DD4/ref=ast_sto_dp_puis?th=1" target="_blank" class="amazon-buy-btn">
+                                <i class="fab fa-amazon"></i> Auf Amazon kaufen
+                            </a>
+                            <a href="https://www.etsy.com/de/listing/4415460907/viola-bennet-moonlit-elegantes-armband?ref=shop_home_feat_2&sr_prefetch=1&pf_from=shop_home&pro=1&frs=1&logging_key=1b04c6c3605bf199c9ad65a92b5420defb772529%3A4415460907" target="_blank" class="etsy-buy-btn">
+                                <i class="fab fa-etsy"></i> Auf Etsy kaufen
+                            </a>
+                        </div>
                     </div>
                     <!-- 商品 2 -->
                     <div class="jewelry-card">
                         <img src="jewelry-2.jpg" alt="Drop Earrings" class="jewelry-thumb">
-                        <div class="jewelry-name">Serenaho Elegant Pearl Bracelet</div>
-                        <a href="https://www.amazon.de/Turquoise-Freshwater-Jewellery-Decoration-freshwater/dp/B0FL2QKKBJ" target="_blank" class="amazon-buy-btn">
-                            <i class="fab fa-amazon"></i> Auf Amazon kaufen
-                        </a>
+                        <div class="jewelry-name">Viola Bennet Perlenkette Red Sonata</div>
+                        <div class="btn-container">
+                            <a href="https://www.amazon.de/Viola-Bennet-Perlenkette-Silberverschluss-CHLX0005-Lila/dp/B0FM4MTL26/ref=ast_sto_dp_puis?th=1" target="_blank" class="amazon-buy-btn">
+                                <i class="fab fa-amazon"></i> Auf Amazon kaufen
+                            </a>
+                            <a href="https://www.etsy.com/de/listing/4415761938/viola-bennet-perlenkette-rot-rosaweiss-o?ref=shop_home_feat_1&sr_prefetch=1&pf_from=shop_home&pro=1&frs=1&logging_key=e5487f0aed258349a8af224c5debadee14a246ba%3A4415761938" target="_blank" class="etsy-buy-btn">
+                                <i class="fab fa-etsy"></i> Auf Etsy kaufen
+                            </a>
+                        </div>
                     </div>
                     <!-- 商品 3 -->
                     <div class="jewelry-card">
                         <img src="jewelry-3.jpg" alt="Promise Ring" class="jewelry-thumb">
-                        <div class="jewelry-name">Flower Verse Pearl Bracelet</div>
-                        <a href="https://www.amazon.de/Handmade-Freshwater-Bracelet-centimetres-cultured/dp/B0FKNC5T79" target="_blank" class="amazon-buy-btn">
-                            <i class="fab fa-amazon"></i> Auf Amazon kaufen
-                        </a>
+                        <div class="jewelry-name">Viola Bennet Elegante Perlenkette 42cm</div>
+                        <div class="btn-container">
+                            <a href="https://www.amazon.de/Viola-Bennet-S%C3%BC%C3%9Fwasser-Perlenkette-Vintage-Verschluss-CHWX0001-42/dp/B0FLYQYGM8/ref=ast_sto_dp_puis" target="_blank" class="amazon-buy-btn">
+                                <i class="fab fa-amazon"></i> Auf Amazon kaufen
+                            </a>
+                            <a href="https://www.etsy.com/de/listing/4418007289/viola-bennet-elegante-perlenkette-42cm-o?ref=shop_home_feat_4&sr_prefetch=1&pf_from=shop_home&pro=1&frs=1&logging_key=f431a84f17e76a9ca5e3974a163b5e50a1775127%3A4418007289" target="_blank" class="etsy-buy-btn">
+                                <i class="fab fa-etsy"></i> Auf Etsy kaufen
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -481,6 +557,12 @@
                     <a href="https://www.amazon.de/VIOLA-BENNET-ELAINE-VANE/dp/3949997660/" target="_blank" class="store-btn">
                         <i class="fab fa-amazon"></i> Amazon
                     </a>
+                    
+                    <!-- YouTube 有声书链接 (Hörbuch) -->
+                    <a href="https://www.youtube.com/@ViolaBennet" target="_blank" class="store-btn" style="color: #c4302b; border-color: #c4302b;">
+                        <i class="fab fa-youtube"></i> Hörbuch
+                    </a>
+
                     <a href="#" target="_blank" class="store-btn">
                         <i class="fab fa-apple"></i> Apple Books
                     </a>
@@ -499,11 +581,11 @@
                 <h3>Original Soundtrack: "In Your Light"</h3>
                 <p>Musik komponiert von Viola Bennet. Hören Sie die Melodien, die die Geschichten inspiriert haben. Mit der Hit-Single "In Your Light" und 8 weiteren emotionalen Titeln.</p>
                 
-                <a href="https://open.spotify.com/" target="_blank" class="spotify-btn">
+                <a href="https://open.spotify.com/album/2MEtweDSHpY8lumZtBqD0r?si=zqi4YGokQfmC4eGUO6ZNwg" target="_blank" class="spotify-btn">
                     <i class="fab fa-spotify"></i> Auf Spotify hören
                 </a>
                 <br><br>
-                <a href="https://www.youtube.com/@ViolaBennet" target="_blank" style="color: #666; font-size: 14px; text-decoration: underline;">Auch auf YouTube verfügbar</a>
+                <a href="https://www.youtube.com/@ViolaBennet?si=5H3lIHOsXO7SCa32" target="_blank" style="color: #666; font-size: 14px; text-decoration: underline;">Auch auf YouTube verfügbar</a>
             </div>
             <div class="split-visual">
                 <img src="original-music.jpg" alt="In Your Light Album Cover" class="cover-img album-cover" onerror="this.src='https://via.placeholder.com/400x400?text=Album+Cover+Art'">
